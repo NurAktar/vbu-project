@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@1&family=Lato&family=Major+Mono+Display&family=Montserrat:wght@600&family=Mulish&family=Open+Sans&family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@1&family=Lato&family=Major+Mono+Display&family=Montserrat:wght@600&family=Mulish&family=Open+Sans&family=Roboto:wght@500&family=Ubuntu:wght@300&display=swap');
 
 *{
     box-sizing: border-box;
@@ -27,14 +27,21 @@ nav button{
 nav img{
     height: 23px;
     border-radius: 50%;object-fit: cover;
+    cursor: pointer;
+    margin-right: 4px;
+}
+.left_nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .profile{
     position: relative;
     display: inline-block;
 }
 .drop-content{
-    position:absolute;
-    display: block;
+    position: absolute;
+    display: none;
     background-color: #ffffff;
     z-index: 1;
     margin-left: -150px;
@@ -47,6 +54,9 @@ nav img{
     border-radius: 9px;
     overflow: hidden;
     cursor: pointer;
+    opacity: 0;
+    transition: 150ms;
+    outline: #9997ff solid 1px;
 }
 .drop-content a{
     padding: 8px 16px;
@@ -56,10 +66,14 @@ nav img{
     height: 37px;
     font-size: 14px;
     font-family: open sans;
-    
 }
 .drop-content a:hover{
-    background-color: #f8f8f8;
+    background-color: #e3e3e3;
+}
+.show_signup{
+    margin-top: 0px;
+    opacity: 100;
+    transition: 300ms;
 }
 .body{
     width: 100%;
@@ -72,32 +86,41 @@ nav img{
 .searchbar_body{
     display: flex;
     width: 100%;
-    margin:31px 0;
+    margin: 31px 0;
     justify-content: center;
     align-items: center;
 }
 .searchbar{
-    font-size: 15px;
+    font-size: 16px;
     font-family: open sans;
     width: 533px;
     min-width: none;
-    border: none;
-    outline: 2px solid rgb(172, 196, 37);
+    outline: none;
+    border: 1px solid #b1b1b1;
+    border-right: none;
     box-shadow: black 0 0 0 0;
-    padding:5px 7px;
-    border-radius: 3px 0 0 3px;
-
+    padding: 5px 12px;
+    border-radius: 5px 0 0 5px;
+    margin-left: 12px;
+    height: 35px;
+    transition: 50ms;
+}
+.searchbar:focus{
+    outline: 2px solid #7776eb;
+    outline-offset: -2px;
 }
 .searchbar_btn{
     cursor: pointer;
-    font-size: 15px;
-    font-family: open sans;
-    padding: 7px 17px;
+    font-size: 12px;
+    font-family: roboto;
+    padding: 11.7px 25px;
     outline: none;
-    background-color: rgb(38, 43, 0);
+    background-color: #7776eb;
     color: #ffffff;
     border: none;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 5px 5px 0;
+    margin-right:12px;
+    height: 35px;
 }
 .heading{
     width: 100%;
@@ -110,7 +133,7 @@ nav img{
     display: flex;
     flex-wrap: wrap;
     justify-content:flex-start;
-    width:calc(354*3px);
+    width:calc(354*4px);
     height: 100%;
 }
 
@@ -142,10 +165,13 @@ nav img{
     margin: 9px;
 }
 .card img{
-    filter: saturate(1.5) brightness(0.8);
     object-fit: cover;
     width: 90px;
-    transition: 99ms;
+    transition: 470ms;
+}
+.card:hover img{
+    filter: saturate(1.5) brightness(0.8);
+    object-position: right;
 }
 .card .details{
     font-family: ubuntu;
@@ -191,4 +217,22 @@ nav img{
     color: #888888;
     padding:7px 29px;
     border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 1500px) {
+    .container{
+        width:calc(354*3px);
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .container{
+        width:calc(354*2px);
+    }
+}
+@media only screen and (max-width: 750px) {
+    .container{
+        width:calc(354*1px);
+    }
 }
