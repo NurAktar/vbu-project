@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@1&family=Lato&family=Major+Mono+Display&family=Montserrat:wght@600&family=Mulish&family=Open+Sans&family=Roboto:wght@500&family=Ubuntu:wght@300&family=Roboto:wght@500&family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@1&family=Lato&family=Major+Mono+Display&family=Montserrat:wght@600&family=Mulish&family=Open+Sans&family=Roboto:wght@500&family=Ubuntu:wght@300&family=Jost&display=swap');
 
 *{
     box-sizing: border-box;
@@ -57,6 +57,10 @@ nav img{
     opacity: 0;
     transition: 150ms;
     outline: #9997ff solid 1px;
+}
+.dropselected{
+    background-color: #dbdbdb;
+    cursor:default;
 }
 .drop-content a{
     padding: 8px 16px;
@@ -219,7 +223,64 @@ nav img{
     border-radius: 5px;
 }
 
-
+.signup_body{
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.signup_box{
+    padding: 20px 15px;
+    font-family: jost;
+    display: flex;
+    flex-flow: column;
+    /* box-shadow: black 1px 1px 13px -9px; */
+    border-radius: 3px;
+}
+.signup_box h2{
+    font-size: 28px;
+    font-family: ubuntu;
+    margin-bottom: 15px;
+}
+.signup_box label{
+    font-family: ubuntu;
+}
+.signup_box input{
+    width: 270px;
+    outline: none;
+    border: 1px solid rgb(206, 206, 206);
+    color: #2a63ff;
+    border:none;
+    border-bottom:1px solid #74baff;
+    /* border-radius: 3px; */
+    font-size: 16px;
+    font-family: ;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+    box-shadow: #313131 0 0 0 0;
+}
+.signup_box input[type=button]{
+    margin-top: 15px;
+    color: #0080ff;
+    /* background-color: #0080ff; */
+    /* background-color: #e6ecff; */
+    padding: 10px 2px;
+    outline: none;
+    border: 1px solid #0080ff;
+    cursor: pointer;
+    font-family: roboto;
+    border-radius: 20px;
+}
+.signup_box input[type=button]:hover{
+    background-color: #006eff;
+    color: white;
+}
+.bg_img{
+    background-image: url("/bgsmall.jpg");
+    background-size: cover;
+    height: 100vh;
+}
 @media only screen and (max-width: 1500px) {
     .container{
         width:calc(354*3px);
