@@ -63,6 +63,8 @@ nav img{
     cursor:default;
 }
 .drop-content a{
+    text-decoration: none;
+    color: black;
     padding: 8px 16px;
     display: flex;
     align-items: center;
@@ -229,14 +231,28 @@ nav img{
     margin-top: 100px;
     justify-content: center;
     align-items: center;
+
+}
+.signup_body img{
+    flex-grow: 2;
+    margin: 0 100px;
+    padding: 20px;
+    width: 500px;
+    max-width: 900px;
 }
 .signup_box{
+    flex-grow: 2;
+    max-width: 500px;
     padding: 20px 15px;
     font-family: jost;
     display: flex;
     flex-flow: column;
     /* box-shadow: black 1px 1px 13px -9px; */
     border-radius: 3px;
+}
+.signup_box form{
+    display: flex;
+    flex-direction: column;
 }
 .signup_box h2{
     font-size: 28px;
@@ -245,41 +261,56 @@ nav img{
 }
 .signup_box label{
     font-family: ubuntu;
+    font-weight: 600;
+}
+.signup_box a{
+    color:#000000;
 }
 .signup_box input{
     width: 270px;
     outline: none;
     border: 1px solid rgb(206, 206, 206);
-    color: #2a63ff;
+    color: #015700;
     border:none;
     border-bottom:1px solid #74baff;
     /* border-radius: 3px; */
     font-size: 16px;
-    font-family: ;
+    font-family: ubuntu;
     padding: 10px 0px;
     margin-bottom: 10px;
     box-shadow: #313131 0 0 0 0;
 }
-.signup_box input[type=button]{
+.signup_box input[type=submit]{
     margin-top: 15px;
     color: #0080ff;
+    color: #000000;
     /* background-color: #0080ff; */
-    /* background-color: #e6ecff; */
+    background-color: #b7ff00;
     padding: 10px 2px;
     outline: none;
     border: 1px solid #0080ff;
+    border: 1px solid #b1b1b1;
     cursor: pointer;
     font-family: roboto;
     border-radius: 20px;
+    transition: 230ms;
 }
-.signup_box input[type=button]:hover{
+.signup_box input[type=submit]:hover{
     background-color: #006eff;
-    color: white;
+    background-color: #000000;
+    border: 1px solid #58ff9b;
+    color: #58ff9b;
+    transition: 170ms;
 }
 .bg_img{
-    background-image: url("/bgsmall.jpg");
+    background-image: url("");
     background-size: cover;
     height: 100vh;
+}
+footer{
+    width: 100%;
+    height: 130px;
+    background-color: #a10606;
 }
 @media only screen and (max-width: 1500px) {
     .container{

@@ -14,33 +14,39 @@
                 <img src="logo.png" alt="not loading">
             </div>
             <div id="profile" class="profile">
-                <img onclick="menu()" src="blank-profile-picture-973460__340.png" alt="notloaded"/>
+                <img onclick="menu()" src="images/blank-profile-picture-973460__340.png" alt="notloaded"/>
                 <ul id="signup_box" class="drop-content">
                     <li>
-                        <a>Login</a>
+                        <a href="signin.html">Login</a>
                     </li>
                     <li>
                         <a class="dropselected">Signup</a>
                     </li>
                     <li>
-                        <a>Home</a>
+                        <a href="/">Home</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="signup_body">
-            <div class="signup_box">
+            <div style="align-items: flex-end;" class="signup_box">
                 <h2>SignUp</h2>
-                <label for="">username</label>
-                <input placeholder="Enter Name" type="text">
-                <label  for="">password</label>
-                <input placeholder="Enter Password" type="text">
-                <label for="">confirm</label>
-                <input placeholder="Confirm Password" type="text">
-                <input type="button" value="Submit">
+                <form action="" method="get">
+                    <label>username</label>
+                    <input required placeholder="Enter Name" type="text">
+                    <label>Email Id</label>
+                    <input required placeholder="Enter email" type="email">
+                    <label>Create password</label>
+                    <input required placeholder="Enter Password" type="password">
+                    <label>confirm</label>
+                    <input required placeholder="Confirm Password" type="password">
+                    <input type="submit" value="Submit">
+                </form>
             </div>
+            <img src="images/bg2.jpg" alt="not loaded"/>
         </div>
     </div>
+    <footer><img src="" alt="notloaded"><div>texts</div></footer>
 </body>
 <script src="script.js"></script>
 </html>
