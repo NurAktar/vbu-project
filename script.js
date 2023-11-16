@@ -16,5 +16,19 @@ window.addEventListener('click', function(e){
             signup_box.classList.toggle("show_signup");
             setTimeout(function(){signup_box.style.display = 'none';},300);
         }
-  } 
-})
+    }
+});
+
+function closebtn(){
+    element = document.getElementById('imageview');
+    if( element.style.display != 'flex'){
+        element.style.display = 'flex';
+        setTimeout(function(){element.classList.toggle("imageviewClose");},30);
+        
+    }
+    else{
+        
+        element.classList.toggle("imageviewClose");
+        setTimeout(function(){element.style.display = 'none';},300);
+    }
+}
