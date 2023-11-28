@@ -235,6 +235,10 @@ nav img{
     justify-content: space-around;
     align-items: center;
 }
+.card .innerbox a{
+    text-decoration: none;
+    color: white;
+}
 .card .pricebox{
     display: flex;
     font-family: open sans;
