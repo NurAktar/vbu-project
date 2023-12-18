@@ -1,3 +1,5 @@
+//signin func
+
 function menu(){
     signup_box = document.getElementById("signup_box");
     if( signup_box.style.display == 'block'){
