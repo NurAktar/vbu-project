@@ -1,0 +1,98 @@
+.header h1{
+    font-family: ubuntu;
+    font-size: 35px;
+    margin: 25px 0 0 35px;
+}
+.p_container{
+    font-family: open sans;
+    min-height: calc(100vh - 103px);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 7px;
+}
+.drag-drop{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    outline: 4px solid #d7d7d7;
+    outline-style: dashed;
+    padding: 10%;
+    border-radius: 15px;
+    color: #5c5c5c;
+    margin: 10px;
+}
+.drag-drop a{
+    color: #000000;
+    font-size: 15px;
+}
+.drag-drop button{
+    cursor: pointer;
+    padding: 7px 27px;
+    font-family: ubuntu;
+    font-size: 20px;
+    border: 1px solid #c9c9c9;
+    color: #494949;
+    border-radius: 5px;
+    margin: 10px;
+}
+.drag-drop button:hover{
+    border: 1px solid #929292;
+    color: #000000;
+    background-color: #e4e4e4;
+
+}
+.drag-drop p{
+    font-size: 13px;
+}
+.bookdetails{
+    font-family: ubuntu;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.bookdetails h1{
+    margin-bottom: 10px;
+}
+.bookdetails label{
+    font-family: jost;
+}
+.bookdetails input{
+    padding: 8px 15px;
+    font-family: ubuntu;
+    font-size: 16px;
+    width: 350px;
+    outline: 1px solid #004d8b;
+    border: none;
+    border-radius: 7px;
+    box-shadow: #00000096 2px 2px 21px -9px;
+    margin: 4px;
+}
+.bookdetails textarea{
+    border: 1px solid #004d8b;
+    outline: none;
+    border-radius: 7px;
+    padding: 8px;
+    font-size: 14px;
+    margin: 4px;
+}
+.bookdetails button{
+    cursor: pointer;
+    padding: 10px 17px;
+    color: white;
+    background-color: #004d8b;
+    font-size: 20px;
+    font-family: ubuntu;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    margin: 10px 4px;
+}
+#nextdiv{
+    display: flex;
+
+}

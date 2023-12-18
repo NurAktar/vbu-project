@@ -133,6 +133,12 @@ footer{
 #contact{
     background-color: #3c3f87;
 }
+#contact:hover{
+    background-color: #5356af;
+}
 #chat{
     background-color: #006dc7;
+}
+#chat:hover{
+    background-color: #158ff3;
 }
