@@ -32,8 +32,9 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
                 `email` varchar(255) NOT NULL,
                 `whatsapp` varchar(255) NOT NULL,
                 `contact` int(10) NOT NULL,
-                `address` varchar(500) NOT NULL
-              )";
+                `address` varchar(500) NOT NULL,
+                `time` timestamp  DEFAULT CURRENT_TIMESTAMP NOT NULL
+                )";
             mysqli_query($conn,$sql);
             header("Location: signin.php");
         }

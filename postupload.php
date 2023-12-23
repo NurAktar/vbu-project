@@ -2,8 +2,8 @@
 session_start();
 if(isset($_SESSION['userid'])){
     include_once "db_conn.php";
-    $email = $_SESSION['userid'];
-    $sql = "SELECT my_post FROM user_reg WHERE email='$email'";
+    $userid = $_SESSION['userid'];
+    $sql = "SELECT my_post FROM user_reg WHERE email='$userid'";
     $res = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($res);
     $my_post = $row['my_post'];
@@ -33,7 +33,7 @@ if(isset($_FILES['file'])){
     $filename = time().'_'.$_FILES['file']['name'];
     move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/'.$filename);
 
-    $sql = "INSERT INTO book_posted(image, name, author, subject, date, mrp, price, publisher, pubdate, edition, pagenumber, lang, used, rate, email, whatsapp, contact, address) VALUES('$filename', '$name', '$author', '$subject', '$date', '$mrp', '$price', '$publisher', '$pubdate', '$edition', '$pagenumber', '$lang', '$used', '$rate', '$email', '$whatsapp', '$contact', '$address')";
+    $sql = "INSERT INTO book_posted(image, name, author, subject, date, mrp, price, publisher, pubdate, edition, pagenumber, lang, used, rate, email, whatsapp, contact, address, posted_by) VALUES('$filename', '$name', '$author', '$subject', '$date', '$mrp', '$price', '$publisher', '$pubdate', '$edition', '$pagenumber', '$lang', '$used', '$rate', '$email', '$whatsapp', '$contact', '$address', '$userid')";
     $res = mysqli_query($conn, $sql);
     $sql = "INSERT INTO `$my_post`(image, name, author, subject, date, mrp, price, publisher, pubdate, edition, pagenumber, lang, used, rate, email, whatsapp, contact, address) VALUES('$filename', '$name', '$author', '$subject', '$date', '$mrp', '$price', '$publisher', '$pubdate', '$edition', '$pagenumber', '$lang', '$used', '$rate', '$email', '$whatsapp', '$contact', '$address')";
     $res = mysqli_query($conn, $sql);
