@@ -8,9 +8,33 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
     if($password == $cpassword){
         include "db_conn.php";
         echo "may be email already exist!";
-        $sql = "INSERT INTO user_reg(username, email, password) VALUES('$username', '$emai', '$cpassword')";
+        $my_post = 'my_post_'.time();
+        $sql = "INSERT INTO user_reg(username, email, password, my_post) VALUES('$username', '$emai', '$cpassword', '$my_post')";
         $res = mysqli_query($conn,$sql);
         if($res){
+            // create mypost
+            $sql = "CREATE TABLE `$my_post` (
+                `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                `image` varchar(255) NOT NULL,
+                `name` varchar(255) NOT NULL,
+                `author` varchar(255) NOT NULL,
+                `subject` varchar(255) NOT NULL,
+                `date` date NOT NULL,
+                `mrp` int(10) NOT NULL,
+                `price` int(10) NOT NULL,
+                `publisher` varchar(255) NOT NULL,
+                `pubdate` date NOT NULL,
+                `edition` int(5) NOT NULL,
+                `pagenumber` int(10) NOT NULL,
+                `lang` varchar(50) NOT NULL,
+                `used` varchar(255) NOT NULL,
+                `rate` int(3) NOT NULL,
+                `email` varchar(255) NOT NULL,
+                `whatsapp` varchar(255) NOT NULL,
+                `contact` int(10) NOT NULL,
+                `address` varchar(500) NOT NULL
+              )";
+            mysqli_query($conn,$sql);
             header("Location: signin.php");
         }
         else{

@@ -201,9 +201,12 @@ nav .logo{
     writing-mode: vertical-rl;
     font-size: 17px;
     font-family: 'Major Mono Display';
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     text-align: center;
-    margin: 9px;
+    padding: 9px;
+    width: 90px;
+    height: 189px;
+    text-overflow: ellipsis;
 }
 .card img{
     object-fit: cover;
