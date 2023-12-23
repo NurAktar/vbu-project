@@ -17,11 +17,13 @@
 .drag-drop{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     outline: 4px solid #d7d7d7;
     outline-style: dashed;
-    padding: 10%;
+    /* padding: 10%; */
+    width: 560px;
+    height: 433px;
     border-radius: 15px;
     color: #5c5c5c;
     margin: 10px;
@@ -130,4 +132,17 @@
 #selectedheader{
     align-items: center;
     display: none;
+}
+@media only screen and (max-width: 1000px) {
+    .drag-drop{
+        width: 360px;
+        height: 380px;
+    }
+}
+
+@media only screen and (min-width: 1450px) {
+    .drag-drop{
+        width: 666px;
+        height: 550px;
+    }
 }
