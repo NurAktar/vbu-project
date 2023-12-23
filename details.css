@@ -51,6 +51,7 @@
     padding-right: 10px;
     max-width: 1366px;
     display: flex;
+    flex-wrap: wrap;
 }
 .imageBox{
     cursor: pointer;
@@ -141,4 +142,31 @@ footer{
 }
 #chat:hover{
     background-color: #158ff3;
+}
+
+@media screen and (max-width:1200px) {
+    .imageBox{
+        width: 335px;
+        height: 335px;
+    }
+    .details_box{
+        width:450px;
+    }
+}
+
+@media screen and (max-width: 880px){
+    .details_box{
+        width: 335px;
+    }
+}
+@media screen and (max-width:749px) {
+    .imageBox{
+        margin:10px;
+    }    
+    .details_box{
+        margin: 10px;
+    }
+    .details_con{
+        justify-content: center;
+    }
 }
