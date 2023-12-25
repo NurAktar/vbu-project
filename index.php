@@ -1,5 +1,13 @@
 <?php
 include_once "login_check.php";
+include_once "db_conn.php";
+
+$sql = "SELECT name FROM book_posted LIMIT 1";
+$res = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($res)) {
+    echo $row['name']."_ ";
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +70,10 @@ include_once "login_check.php";
                         <a href="createpost.php">Create Post</a>
                     </li>
                     <li>
-                        <a href="">Messages</a>
+                        <a href="#">Messages</a>
                     </li>
                     <li>
-                        <a href="">My Posts</a>
+                        <a href="#">My Posts</a>
                     </li>
                     <li>
                         <a href="logout.php">Logout</a>
