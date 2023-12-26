@@ -1,15 +1,17 @@
 <?php
+$npage = null;
 include_once "login_check.php";
 include_once "db_conn.php";
 
-$sql = "SELECT name FROM book_posted LIMIT 1";
-$res = mysqli_query($conn, $sql);
-
-while ($row = mysqli_fetch_assoc($res)) {
-    echo $row['name']."_ ";
+if (isset($_GET['npage'])) {
+    $id = $_GET['npage'];
+    $sql = "SELECT * FROM book_posted WHERE id < $id ORDER BY id DESC LIMIT 12";
+    $res = mysqli_query($conn, $sql);
 }
+else{
+    $sql = "SELECT * FROM book_posted ORDER BY id DESC LIMIT 12";
+    $res = mysqli_query($conn, $sql);}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +50,7 @@ while ($row = mysqli_fetch_assoc($res)) {
     <nav class="navbar">
         <div class="left_nav">
             <!-- <button><svg style="color: #696969" height="27px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="22px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2 s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2 S29.104,22,28,22z" fill="#696969"></path></svg></button> -->
-            <img class="logo" src="navbarlogo.png" alt="not loading">
+            <a href="index.php"><img class="logo" src="navbarlogo.png" alt="not loading"></a>
         </div>
         <div id="profile" class="profile">
             <img class="avatar" onclick="menu()" <?php if($display){?> src="images/blank-profile-picture-973460__340.png" <?php } else{ ?> src="images/avatar.jpg" <?php } ?> alt="notloaded"/>
@@ -94,137 +96,37 @@ while ($row = mysqli_fetch_assoc($res)) {
             <div class="heading">
                 <h1>Recent post:</h1>
             </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="https://source.unsplash.com/random/150x200/?books" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.php">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
+            <!-- fetching cards -->
+            <?php
+            while ($row = mysqli_fetch_assoc($res)) {?>
+                <div class="card">
+                    <span class="sub"><?php echo $row['subject']; ?></span>
+                    <img src="<?php echo 'uploads/'.$row['image']; ?>" alt="notloaded">
+                    <div class="details">
+                        <h5><?php echo $row['name']; ?></h5>
+                        <p>Writer: <?php echo $row['author']; ?><br>Publishing Date: <?php echo $row['pubdate']; ?><br><?php echo $row['edition']; ?>th Edition.</p>
+                        <div class="innerbox">
+                            <a href="details.php?bookid=<?php echo $row['id']; ?>">Details</a>
+                            <div class="pricebox">
+                                <span>Price: ₹<?php echo $row['price']; ?></span>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
-                <!-- inner box item / img/ details -->
-            </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="https://source.unsplash.com/random/150x200/?books=4" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.html">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- inner box item / img/ details -->
-            </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="https://source.unsplash.com/random/150x200/?books=3" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.html">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- inner box item / img/ details -->
-            </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="https://source.unsplash.com/random/150x200/?books=2" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.html">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- inner box item / img/ details -->
-            </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="https://source.unsplash.com/random/150x200/?books=5" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.html">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- inner box item / img/ details -->
-            </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="https://source.unsplash.com/random/150x200/?books=6" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.html">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- inner box item / img/ details -->
-            </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="https://source.unsplash.com/random/150x200/?books=7" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.html">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- inner box item / img/ details -->
-            </div>
-            <div class="card">
-                <span class="sub">Sub_ Math</span>
-                <img src="high-angle-books-stack-assortment.jpg" alt="">
-                <div class="details">
-                    <h5>Let us C.</h5>
-                    <p>Writer: Yashavant Kanetkar.<br>Publishing Date:2022<br>17th Eddition.</p>
-                    <div class="innerbox">
-                        <button><a href="details.html">Details</a></button>
-                        <div class="pricebox">
-                            <span>Price:</span><span>299</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- inner box item / img/ details -->
-            </div>
+            <?php 
+                $npage = $row['id'];
+            } ?>
+            <?php if($npage == null){
+            echo "<span class='nocontent'>No More Content!</span>";
+            } ?>
         </div>
     </div>
-    <section style="height: 600px;"></section>
+    <!-- <button>Load more</button> -->
+    <div class="pagebar">
+        <?php if($npage != null) { echo '<a href=index.php?npage='.$npage.'>Load More</a>'; }?> 
+    </div>
+
+    <!-- <section style="height: 600px;"></section> -->
     <footer>
         <img src="images/vbu_logo_white.png" alt="notloaded">
         <div>

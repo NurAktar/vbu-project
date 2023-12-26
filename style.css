@@ -6,7 +6,9 @@
     margin:0;
     scroll-behavior: smooth;
 }
-
+html{
+    min-height: 100vh;
+}
 nav{
     display: flex;
     justify-content: space-between;
@@ -95,7 +97,7 @@ nav .logo{
 }
 .body{
     width: 100%;
-    height: auto;
+    min-height: calc(100vh - 248);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,7 +165,7 @@ nav .logo{
 .heading{
     width: 100%;
     font-size: 20px;
-    font-family: 'Alumni Sans Pinstripe';
+    font-family: 'roboto';
     font-weight: bold;
     padding-left: 20px;
 }
@@ -172,7 +174,7 @@ nav .logo{
     flex-wrap: wrap;
     justify-content:flex-start;
     width:calc(354*4px);
-    height: 100%;
+    /* height: 100%; */
 }
 
 .card{
@@ -182,13 +184,15 @@ nav .logo{
     margin: 7px;
     width: 340px;
     height: 190px;
-    box-shadow: black 7px 7px 21px -16px;
+    /* box-shadow: black 7px 7px 21px -16px; */
+    box-shadow: rgba(136, 165, 191, 0.48) 3px 2px 16px 0px, rgba(255, 255, 255, 0.8) -3px -2px 16px 0px;
     border-top:1px solid transparent;
     border-right: 1px solid transparent;
 }
 .card:hover{
     transition: 725ms;
-    box-shadow: #ff0000 3px 3px 17px -9px;
+    /* box-shadow: #ff0000 3px 3px 17px -9px; */
+    box-shadow: #ff0000c9 3px 3px 17px -9px;
     border-top: 1px solid rgb(255, 76, 76);
     border-right: 1px solid rgb(219, 112, 112);
     /* box-shadow: #0087ff 3px 3px 17px -9px; */
@@ -201,7 +205,7 @@ nav .logo{
     writing-mode: vertical-rl;
     font-size: 17px;
     font-family: 'Major Mono Display';
-    color: rgb(0, 0, 0);
+    color: rgb(233, 233, 233);
     text-align: center;
     padding: 9px;
     width: 90px;
@@ -236,7 +240,7 @@ nav .logo{
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
-.card .innerbox button{
+.card .innerbox a{
     background-color: #0080ff;
     color: #ffffff;
     cursor: pointer;
@@ -249,7 +253,7 @@ nav .logo{
     border-radius: 3px;
     transition: 0.2s;
 }
-.card:hover .innerbox button{
+.card:hover .innerbox a{
     background-color: #ff5151;
 }
 .card .innerbox{
@@ -270,7 +274,14 @@ nav .logo{
     padding:7px 29px;
     border-radius: 5px;
 }
-
+.nocontent{
+    margin: 50px auto;
+    text-align: center;
+    width: 100%;
+    font-family: 'Jost';
+    font-size: 45px;
+    color: #b1b1b1;
+}
 .signup_body{
     display: flex;
     width: 100%;
@@ -380,6 +391,21 @@ footer img:hover{
 }
 footer div{
     text-align: center;
+}
+.pagebar{
+    display: flex;
+    justify-content: center;
+    font-family: jost;
+    font-size: 20px;
+    margin: 10px;
+}
+.pagebar a{
+    padding: 7px 27px;
+    background-color: #006eff;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 29px;
 }
 @media only screen and (max-width: 1500px) {
     .container{
