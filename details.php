@@ -1,5 +1,20 @@
 <?php
 include_once "login_check.php";
+if(isset($_GET['bookid'])){
+    include_once "db_conn.php";
+    $id = $_GET['bookid'];
+    $sql = "SELECT * FROM book_posted WHERE id = $id";
+    $res = mysqli_query($conn, $sql);
+    if(!$row = mysqli_fetch_assoc($res)){
+        header("Location: index.php");
+    }
+    else{
+        $priceoff = ($row['price']*100)/$row['mrp'];
+    }
+}
+else{
+    header("Location:index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +24,7 @@ include_once "login_check.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="details.css">
-    <title>vbu-sellmybook</title>
+    <title>VBU SellMyBook</title>
 </head>
 <body>
     <nav class="navbar">
@@ -34,7 +49,7 @@ include_once "login_check.php";
                 }
                 else{?>
                     <li>
-                        <a href="">Create Post</a>
+                        <a href="createpost.php">Create Post</a>
                     </li>
                     <li>
                         <a href="">Messages</a>
@@ -53,21 +68,21 @@ include_once "login_check.php";
     <div id="imageview" class="imageview">
         <div class="innerImageview">
             <img onclick="closebtn()" id="closebtn" src="images/close.png" alt="close"/>
-            <img src="https://source.unsplash.com/random/300×300/?books" alt="notloaded"/>
+            <img src="<?php echo 'uploads/'.$row['image']; ?>" alt="notloaded"/>
         </div>
     </div>
     <div class="body">
         <div class="details_con">
             <div class="imageBox">
-                <img onclick="closebtn()" src="https://source.unsplash.com/random/300×300/?books" alt="">
+                <img onclick="closebtn()" src="<?php echo 'uploads/'.$row['image']; ?>" alt="">
             </div>
             <div class="details_box">
-                <h2>Let Us C : Authentic Guide To C Programming Language</h2>
-                <span>by Yashavant Kanetkar</span>
+                <h2><?php echo $row['name']; ?></h2>
+                <span>by <?php echo $row['author']; ?></span>
                 <div class="price">
-                    <h2>Price: ₹327</h2>
-                    <span class="mrp">MRP: ₹419</span>
-                    <span class="priceoff">18%</span>
+                    <h2>Price: ₹<?php echo $row['price']; ?></h2>
+                    <span class="mrp">MRP: ₹<?php echo $row['mrp']; ?></span>
+                    <span class="priceoff"><?php echo $priceoff; ?>%</span>
                 </div>
                 <div class="purchase">
                     <input id="contact" type="button" value="Contact">
@@ -75,24 +90,22 @@ include_once "login_check.php";
                 </div>
                 <div class="details">
                     <span>Book Details: </span>
-                    <p>Author: Yashavant Kanetkar </p>
-                    <p>Publisher: pnb</p>
-                    <p>Publishing Date: 2023</p>
-                    <p>Edition: 19th</p>
-                    <p>Number of Pages: 492</p>
-                    <p>Language: English</p>
-                </div>
-                <div class="details condition">
-                    <span>Book Condition: </span>
-                    <p>Years old: 3yr</p>
-                    <p>Rating condition: 7/10</p>
-                    <p></p>
+                    <p>Author: <?php echo $row['author']; ?> </p>
+                    <p>Publisher: <?php echo $row['publisher']; ?></p>
+                    <p>Publishing Date: <?php echo $row['pubdate']; ?></p>
+                    <p>Edition: <?php echo $row['edition']; ?>th</p>
+                    <p>Number of Pages: <?php echo $row['pagenumber']; ?></p>
+                    <p>Language: <?php echo $row['lang']; ?></p>
                 </div>
                 <div class="details">
-                    <span>owner's details: </span>
-                    <p>Location: sirinikatan, bolpur</p>
-                    <p>collect the book in shiksha vabna</p>
-                    <p></p>
+                    <!-- class condition removed for now -->
+                    <span>Book Condition:</span>
+                    <p>Years old: <?php echo $row['used']; ?></p>
+                    <p>Rating condition: <?php echo $row['rate']; ?>/10</p>
+                </div>
+                <div class="details">
+                    <span>Seller details:</span>
+                    <p>Location: <?php echo $row['address']; ?></p>
                 </div>
             </div>
         </div>

@@ -6,8 +6,10 @@
     margin:0;
     scroll-behavior: smooth;
 }
-html{
+body{
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 nav{
     display: flex;
@@ -97,7 +99,6 @@ nav .logo{
 }
 .body{
     width: 100%;
-    min-height: calc(100vh - 248);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -363,6 +364,7 @@ nav .logo{
     height: 100vh;
 }
 footer{
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
