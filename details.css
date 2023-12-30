@@ -155,6 +155,69 @@ footer{
     background-color: #158ff3;
 }
 
+#contact_details{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    background-color: #d1d1d194;
+    align-items: center;
+    justify-content: center;
+}
+#contact_details .C_body{
+    display: flex;
+    flex-direction: column;
+    font-family: open sans;
+    font-size: 20px;
+    width: 450px;
+    height: 185px;
+    background-color: #ffffff;
+    
+}
+.inner_cText{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.inner_cText p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.inner_cText img{
+    cursor: pointer;
+    width: 27px;
+    height: 100%;
+    object-fit: contain;
+}
+.inner_cText img:hover{
+    /* background-color: #ffeb86; */
+    outline: 1px solid black;
+    outline-style: dashed;
+}
+#contact_details .C_header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffd600;
+}
+.C_header h1{
+    font-size: 20px;
+    font-family: 'Jost';
+    text-align: center;
+    /* margin-left: 58px; */
+    border-right: 1px solid #dbc13f;
+    padding: 5px;
+    flex-grow: 1;
+}
+.C_header img{
+    cursor: pointer;
+    width: 40px;
+}
+.C_header img:hover{
+    /* background-color: #dbb700; */
+    outline: 1px solid;
+    outline-style: auto;
+}
 @media screen and (max-width:1200px) {
     .imageBox{
         width: 335px;
@@ -192,6 +255,11 @@ footer{
     .imageBox{
         width: 250px;
         height: 250px;
+    }
+}
+@media screen and (max-width:550px) {
+    #contact_details .C_body{
+        width: 345px;
     }
 }
 @media screen and (max-width:375px){

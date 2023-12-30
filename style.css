@@ -419,6 +419,17 @@ footer div{
     .container{
         width:calc(354*2px);
     }
+    .signup_box{
+        flex-grow: 0;
+    }
+    .signup_body img{
+        display: none;
+    }
+    .bg_img{
+        background: url(images/bgsmall.jpg);
+        background-size: cover;
+        background-position: bottom;
+    }
 }
 @media only screen and (max-width: 750px) {
     .container{

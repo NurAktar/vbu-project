@@ -30,7 +30,7 @@ else{
     <nav class="navbar">
         <div class="left_nav">
             <!-- <button><svg style="color: #696969" height="27px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="22px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2 s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2 S29.104,22,28,22z" fill="#696969"></path></svg></button> -->
-            <img class="logo" src="navbarlogo.png" alt="not loading">
+            <a href="index.php"><img class="logo" src="navbarlogo.png" alt="not loading"></a>
         </div>
         <div id="profile" class="profile">
             <img class="avatar" onclick="menu()" <?php if($display){?> src="images/blank-profile-picture-973460__340.png" <?php } else{ ?> src="images/avatar.jpg" <?php } ?> alt="notloaded"/>
@@ -65,6 +65,26 @@ else{
             </ul>
         </div>
     </nav>
+    <div id="contact_details">
+        <div class="C_body">
+            <div class="C_header">
+                <h1>Seller Contacts</h1>
+                <img src="images/cross.png" alt="X">
+            </div>
+            <div class="inner_cText">
+                <p>Whatsapp: <?php echo $row['whatsapp']; ?></p>
+                <img src="images/copy.png" alt="Copy">
+            </div>
+            <div class="inner_cText">
+                <p>Phone: <?php echo $row['contact']; ?></p>
+                <img src="images/copy.png" alt="Copy">
+            </div>
+            <div class="inner_cText">
+                <p>Email Id: <?php echo $row['email']; ?></p>
+                <img src="images/copy.png" alt="Copy">
+            </div>
+        </div>
+    </div>
     <div id="imageview" class="imageview">
         <div class="innerImageview">
             <img onclick="closebtn()" id="closebtn" src="images/close.png" alt="close"/>
@@ -100,11 +120,12 @@ else{
                 <div class="details">
                     <!-- class condition removed for now -->
                     <span>Book Condition:</span>
-                    <p>Years old: <?php echo $row['used']; ?></p>
+                    <p>Purchasing Date: <?php echo $row['date']; ?></p>
+                    <p>Used: <?php echo $row['used']; ?></p>
                     <p>Rating condition: <?php echo $row['rate']; ?>/10</p>
                 </div>
                 <div class="details">
-                    <span>Seller details:</span>
+                    <span>Seller Details:</span>
                     <p>Location: <?php echo $row['address']; ?></p>
                 </div>
             </div>
