@@ -158,7 +158,8 @@ footer{
 #contact_details{
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: none;
+    flex-direction: column;
     position: absolute;
     background-color: #d1d1d194;
     align-items: center;
@@ -174,6 +175,15 @@ footer{
     background-color: #ffffff;
     
 }
+#copied{
+    color: #adadad;
+    text-shadow: 2px 2px 2px #d3d3d3;
+    backdrop-filter: blur(3px);
+    font-family: 'Lato';
+    font-size: 27px;
+    position: absolute;
+    visibility: hidden;
+}
 .inner_cText{
     padding: 10px;
     display: flex;
@@ -183,6 +193,7 @@ footer{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: lato;
 }
 .inner_cText img{
     cursor: pointer;

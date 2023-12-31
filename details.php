@@ -69,21 +69,22 @@ else{
         <div class="C_body">
             <div class="C_header">
                 <h1>Seller Contacts</h1>
-                <img src="images/cross.png" alt="X">
+                <img src="images/cross.png" onclick="close_d()" alt="X">
             </div>
             <div class="inner_cText">
                 <p>Whatsapp: <?php echo $row['whatsapp']; ?></p>
-                <img src="images/copy.png" alt="Copy">
+                <img onclick="whatsapp_c()" src="images/copy.png" alt="Copy">
             </div>
             <div class="inner_cText">
                 <p>Phone: <?php echo $row['contact']; ?></p>
-                <img src="images/copy.png" alt="Copy">
+                <img onclick="phone_c()" src="images/copy.png" alt="Copy">
             </div>
             <div class="inner_cText">
                 <p>Email Id: <?php echo $row['email']; ?></p>
-                <img src="images/copy.png" alt="Copy">
+                <img onclick="email_c()" src="images/copy.png" alt="Copy">
             </div>
         </div>
+        <span id="copied">Copied to Clipboard!</span>
     </div>
     <div id="imageview" class="imageview">
         <div class="innerImageview">
@@ -105,7 +106,7 @@ else{
                     <span class="priceoff"><?php echo $priceoff; ?>%</span>
                 </div>
                 <div class="purchase">
-                    <input id="contact" type="button" value="Contact">
+                    <input id="contact" onclick="show_c()" type="button" value="Contact">
                     <input id="chat" type="button" value="Message">
                 </div>
                 <div class="details">
@@ -140,4 +141,37 @@ else{
     </footer>
 </body>
 <script src="script.js"></script>
+<script>
+    let copied = document.getElementById("copied");
+    let c_details = document.getElementById("contact_details");
+    function close_d(){
+        c_details.style.display = "none";
+    }
+    function whatsapp_c(){
+        var text = "<?php echo $row['whatsapp']; ?>";
+        navigator.clipboard.writeText(text);
+        copied.style.visibility = "visible";
+        c_hide();
+    }
+    function phone_c(){
+        var text = "<?php echo $row['contact']; ?>";
+        navigator.clipboard.writeText(text);
+        copied.style.visibility = "visible";
+        c_hide();
+    }
+    function email_c(){
+        var text = "<?php echo $row['email']; ?>";
+        navigator.clipboard.writeText(text);
+        copied.style.visibility = "visible";
+        c_hide();
+    }
+    function c_hide(){
+        setTimeout(()=>{
+            copied.style.visibility = "hidden";
+        },2000)
+    }
+    function show_c(){
+        c_details.style.display = "flex";
+    }
+</script>
 </html>
