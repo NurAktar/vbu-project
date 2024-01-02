@@ -9,7 +9,7 @@ if(isset($_GET['bookid'])){
         header("Location: index.php");
     }
     else{
-        $priceoff = ($row['price']*100)/$row['mrp'];
+        $priceoff = round((100 - ($row['price']*100)/$row['mrp']),2);
     }
 }
 else{

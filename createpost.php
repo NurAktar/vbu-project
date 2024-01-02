@@ -55,7 +55,7 @@ include_once "login_check.php";
                     <h2 id="dragheader">Drag and Drop image here</h2>
                     <span>OR</span>
                     <button onclick="file_browse()">Add Files</button>
-                    <input id="i_image" type="file" accept=".jpg,.png,images/*" hidden>
+                    <input id="i_image" type="file" accept=".jpg,.jpeg,.webp,.png,images/*" hidden>
                     <p>Supported Files</p>
                     <p>jpg, png</p>
                     <br>

@@ -131,7 +131,8 @@ else{
         <img src="images/vbu_logo_white.png" alt="notloaded">
         <div>
             <h5>Project by Sk Nur Aktar</h5>
-            <p>Old Book selling website for VBU.</p>
+            <h5>Supervised by Dr. Kakali Datta.</h5>
+            <p>Old Book selling website for Visva-Bharati University.</p>
         </div>
     </footer>
 </body>
