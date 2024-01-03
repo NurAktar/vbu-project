@@ -379,6 +379,7 @@ footer{
     /* background-color: rgb(16, 11, 37); */
     /* background-color: rgb(93 0 0); */
     background-color: #00161c;
+    background-image: radial-gradient(#000000 33% ,#0f0087 200%);
     color: white;
     font-family: jost;
     font-size: 14px;

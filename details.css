@@ -160,7 +160,7 @@ footer{
     height: 100vh;
     display: none;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     background-color: #d1d1d194;
     align-items: center;
     justify-content: center;
