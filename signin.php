@@ -27,6 +27,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit']
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
