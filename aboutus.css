@@ -1,0 +1,14 @@
+.container {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    font-family: mulish;
+}
+.container img {
+    width: 150px;
+}
+.container div{
+    text-align: center;
+}

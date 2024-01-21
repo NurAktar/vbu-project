@@ -27,7 +27,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit']
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,10 +44,13 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit']
                         <a class="dropselected">Login</a>
                     </li>
                     <li>
-                        <a href="signup.php">Signup</a>
+                        <a href="signup.php">SignUp</a>
                     </li>
                     <li>
                         <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="aboutus.php">About us</a>
                     </li>
                 </ul>
             </div>
@@ -55,7 +58,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit']
         <div class="signup_body">
             <img src="images/bg1.jpg" alt="not loaded"/>
             <div class="signup_box">
-                <h2>SignIn</h2>
+                <h2>Login</h2>
                 <form action="" method="post">
                     <label>Email Id</label>
                     <input name="email" required placeholder="Enter email" type="email">
@@ -71,7 +74,8 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit']
         <img src="images/vbu_logo_white.png" alt="notloaded">
         <div>
             <h5>Project by Sk Nur Aktar</h5>
-            <p>Old Book selling website for VBU.</p>
+            <h5>Supervised by Dr. Kakali Datta.</h5>
+            <p>Old Book selling website for Visva-Bharati University.</p>
         </div>
     </footer>
 </body>

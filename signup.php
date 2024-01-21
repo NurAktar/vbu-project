@@ -70,10 +70,13 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
                         <a href="signin.php">Login</a>
                     </li>
                     <li>
-                        <a class="dropselected">Signup</a>
+                        <a class="dropselected">SignUp</a>
                     </li>
                     <li>
                         <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="aboutus.php">About us</a>
                     </li>
                 </ul>
             </div>
@@ -100,7 +103,8 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
         <img src="images/vbu_logo_white.png" alt="notloaded">
         <div>
             <h5>Project by Sk Nur Aktar</h5>
-            <p>Old Book selling website for VBU.</p>
+            <h5>Supervised by Dr. Kakali Datta.</h5>
+            <p>Old Book selling website for Visva-Bharati University.</p>
         </div>
     </footer>
 </body>

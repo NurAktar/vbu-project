@@ -24,7 +24,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="details.css">
-    <title>VBU SellMyBook</title>
+    <title>vbu-sellmybook</title>
 </head>
 <body>
     <nav class="navbar">
@@ -44,7 +44,7 @@ else{
                         <a href="signup.php">SignUp</a>
                     </li>
                     <li>
-                        <a href="signup.php">About us</a>
+                        <a href="aboutus.php">About us</a>
                     </li><?php
                 }
                 else{?>
@@ -56,6 +56,9 @@ else{
                     </li>
                     <li>
                         <a href="">My Posts</a>
+                    </li>
+                    <li>
+                        <a href="aboutus.php">About us</a>
                     </li>
                     <li>
                         <a href="logout.php">Logout</a>
@@ -136,7 +139,8 @@ else{
         <img src="images/vbu_logo_white.png" alt="notloaded">
         <div>
             <h5>Project by Sk Nur Aktar</h5>
-            <p>Old Book selling website for VBU.</p>
+            <h5>Supervised by Dr. Kakali Datta.</h5>
+            <p>Old Book selling website for Visva-Bharati University.</p>
         </div>
     </footer>
 </body>

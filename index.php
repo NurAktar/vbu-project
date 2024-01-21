@@ -64,7 +64,7 @@ else{
                         <a href="signup.php">SignUp</a>
                     </li>
                     <li>
-                        <a href="signup.php">About us</a>
+                        <a href="aboutus.php">About us</a>
                     </li><?php
                 }
                 else{?>
@@ -76,6 +76,9 @@ else{
                     </li>
                     <li>
                         <a href="#">My Posts</a>
+                    </li>
+                    <li>
+                        <a href="aboutus.php">About us</a>
                     </li>
                     <li>
                         <a href="logout.php">Logout</a>
