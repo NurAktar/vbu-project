@@ -7,7 +7,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit']
     include "db_conn.php";
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $sql = "SELECT password FROM user_reg WHERE email='$email'";
+    $sql = "SELECT password,username FROM user_reg WHERE email='$email'";
     $res = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($res);
     if($row['password'] != $password){
@@ -16,6 +16,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit']
     else{
         //set session:
         $_SESSION['userid'] = $email;
+        $_SESSION['uname_log'] = $row['username'];
         header("Location:index.php");
     }
     

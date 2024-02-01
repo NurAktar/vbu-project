@@ -15,7 +15,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 34px;
     width: 100%;
     height: 55px;
     background-color: #ffffff;
@@ -53,26 +53,35 @@ nav .logo{
 }
 .profile{
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
 }
+.welcome{
+    text-decoration: none;
+    color: inherit;
+    margin-right: 5px;
+    font-family: jost;
+    font-weight: 400;
+}
+
 .drop-content{
     position: absolute;
     display: none;
     background-color: #ffffff;
     z-index: 1;
-    margin-left: -150px;
-    margin-top: 7px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: -112px;
+    margin-top: 155px;
+    font-family: jost;
     text-align: left;
     padding:0px;
     color: black;
-    box-shadow: black 0px 1px 15px -9px;
-    border-radius: 9px;
+    box-shadow: #000000cc 2px 2px 9px -3px;
+    border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
     opacity: 0;
     transition: 150ms;
-    outline: #9997ff solid 1px;
+    outline: #d2d1ff solid 1px;
 }
 .dropselected{
     background-color: #dbdbdb;
@@ -87,14 +96,14 @@ nav .logo{
     width: 160px;
     height: 37px;
     font-size: 14px;
-    font-family: open sans;
+    font-family: jost;
 }
 .drop-content a:hover{
     background-color: #e3e3e3;
 }
 .show_signup{
-    margin-top: 0px;
-    opacity: 100;
+    margin-top: 146px;
+    opacity: 1;
     transition: 300ms;
 }
 .body{
@@ -105,11 +114,19 @@ nav .logo{
 }
 
 .searchbar_body{
+    position: relative;
     display: flex;
+    flex-direction: column;
     width: 100%;
     margin: 31px 0;
     justify-content: center;
     align-items: center;
+}
+.search_container{
+    width: 553px;
+    min-width: auto;
+    display: flex;
+    justify-content: center;
 }
 .searchbar_body button{
     width: 90px;
@@ -123,22 +140,47 @@ nav .logo{
     border-radius: 0 5px 5px 0;
     margin-right: 12px;
 }
-.searchbar_body img{
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
+.searchbar_body ul{
+    display: grid;
+    z-index: 10;
+    position: absolute;
+    top: 35px;
+    font-family: roboto;
+    font-size: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    list-style: none;
+    background-color: #ffffff;
+    width: 529px;
+    box-shadow: #00000063 0px 2px 5px -1px;
+    border-radius: 3px;
+}
+.searchbar_body ul li{
+    padding: 8px 16px;
+    transition: 150ms;
+    cursor: pointer;
+}
+.searchbar_body a{
+    text-decoration: none;
+    color: inherit;
+}
+.searchbar_body a:hover{
+    background-color: #e0e0e0;
+}
+.searchbar_body a:focus{
+    background-color: #dadada;
 }
 .searchbar{
     font-size: 16px;
-    font-family: open sans;
-    width: 533px;
+    font-family: jost;
+    width: 100%;
     min-width: none;
     outline: none;
     border: 1px solid #b1b1b1;
     border-right: none;
     box-shadow: black 0 0 0 0;
     padding: 5px 12px;
-    border-radius: 5px 0 0 5px;
+    border-radius: 3px 0 0 3px;
     margin-left: 12px;
     height: 35px;
     transition: 50ms;
@@ -156,7 +198,7 @@ nav .logo{
     background-color: #7776eb;
     color: #ffffff;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 3px 3px 0;
     margin-right:12px;
     height: 35px;
 }
@@ -166,7 +208,7 @@ nav .logo{
 .heading{
     width: 100%;
     font-size: 20px;
-    font-family: 'Rubik Doodle Shadow';
+    font-family: 'raleway';
     font-weight: bold;
     padding-left: 20px;
 }
@@ -201,17 +243,21 @@ nav .logo{
     /* border-right: 1px solid rgb(112 211 219); */
 }
 .card .sub{
+    opacity: 1;
     position:absolute;
     z-index: 9;
     writing-mode: vertical-rl;
     font-size: 17px;
     font-family: 'Major Mono Display';
-    color: rgb(233, 233, 233);
+    color: #ffffff;
     text-align: center;
     padding: 9px;
-    width: 90px;
+    max-width: 90px;
     height: 189px;
     text-overflow: ellipsis;
+    overflow: hidden;
+    background: #00000099;
+    transition-duration: 500ms;
 }
 .card img{
     object-fit: cover;
@@ -222,11 +268,16 @@ nav .logo{
     filter: saturate(1.5) brightness(0.8);
     object-position: right;
 }
+.card:hover .sub{
+    opacity: 0;
+    max-width: 0;
+}
 .card .details{
-    font-family: ubuntu;
+    font-family: jost;
     padding:15px;
 }
 .card .details h5{
+    font-weight: 500;
     font-size: 20px;
     margin-bottom: 8px;
     white-space: nowrap;
@@ -236,7 +287,8 @@ nav .logo{
 }
 .card .details p{
     margin-bottom:19px;
-    font-family: 'open sans';
+    font-family: 'jost';
+    font-weight: 400;
     font-size: 16px;
     height: 70px;
     width: 225px;
@@ -272,10 +324,11 @@ nav .logo{
 }
 .card .pricebox{
     display: flex;
-    font-family: open sans;
+    font-family: jost;
+    font-weight: 500;
     align-items: baseline;
     background-color: rgb(255, 255, 255);
-    color: #888888;
+    color: green;
     padding:7px;
     border-radius: 5px;
 }

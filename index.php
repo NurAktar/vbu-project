@@ -1,5 +1,6 @@
 <?php
 $npage = null;
+$searching = false;
 include_once "login_check.php";
 include_once "db_conn.php";
 
@@ -7,6 +8,13 @@ if (isset($_GET['npage'])) {
     $id = $_GET['npage'];
     $sql = "SELECT * FROM book_posted WHERE id < $id ORDER BY id DESC LIMIT 12";
     $res = mysqli_query($conn, $sql);
+}
+elseif (isset($_GET['search'])) {
+    $query = $_GET['search'];
+    $sql = "SELECT * FROM book_posted WHERE name LIKE '$query%' UNION SELECT * FROM book_posted WHERE name LIKE '%$query%' UNION SELECT * FROM book_posted WHERE author LIKE '$query%' LIMIT 12";
+    // $sql = "SELECT name FROM book_posted WHERE name LIKE '$q%' UNION SELECT name FROM book_posted WHERE name LIKE '%$q%' UNION SELECT author FROM book_posted WHERE author LIKE '$q%' LIMIT 5";
+    $res = mysqli_query($conn, $sql);
+    $searching = true;
 }
 else{
     $sql = "SELECT * FROM book_posted ORDER BY id DESC LIMIT 12";
@@ -54,6 +62,7 @@ else{
             <a href="index.php"><img class="logo" src="navbarlogo.png" alt="not loading"></a>
         </div>
         <div id="profile" class="profile">
+            <?php if($display){ echo "<a class='welcome' href='signin.php'>Login</a>"; } else{ echo "<span class='welcome'>".$uname_log."</span>"; } ?>
             <img class="avatar" onclick="menu()" <?php if($display){?> src="images/blank-profile-picture-973460__340.png" <?php } else{ ?> src="images/avatar.jpg" <?php } ?> alt="notloaded"/>
             <ul id="signup_box" class="drop-content">
                 <?php
@@ -91,9 +100,11 @@ else{
     </nav>
     <div class="body">
         <div class="searchbar_body">
-            <input placeholder="search book name..." class="searchbar" type="text">
-            <input class="searchbar_btn" value="SEARCH" type="button"></input>
-            <!-- <button><img src="search.svg" alt="search"></button> -->
+            <div class="search_container">
+                <input autocomplete="off" id="searchq" placeholder="Search book name/author..." class="searchbar" type="text">
+                <input class="searchbar_btn" value="SEARCH" onclick="searched()" type="button"></input>
+            </div>
+            <ul id="search_result"></ul>
         </div>
         
         <div class="container">
@@ -127,7 +138,7 @@ else{
     </div>
     <!-- <button>Load more</button> -->
     <div class="pagebar">
-        <?php if($npage != null) { echo '<a href=index.php?npage='.$npage.'>Load More</a>'; }?> 
+        <?php if($npage != null && $searching == false) { echo '<a href=index.php?npage='.$npage.'>Load More</a>'; }?> 
     </div>
 
     <!-- <section style="height: 600px;"></section> -->
@@ -141,4 +152,5 @@ else{
     </footer>
 </body>
 <script src="script.js"></script>
+<script src="searchbar.js"></script>
 </html>
