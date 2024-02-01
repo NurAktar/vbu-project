@@ -1,3 +1,10 @@
+function boldquery(string, query) {
+    var regex = new RegExp(query, 'i');
+    var boldedString = string.replace(regex, '<b>$&</b>');
+    console.log(boldedString);
+    return boldedString;
+}
+
 //auto-suggestion for search..
 document.getElementById("searchq").addEventListener("keyup",(e)=>{
     var query = document.getElementById("searchq").value;
@@ -17,18 +24,21 @@ document.getElementById("searchq").addEventListener("keyup",(e)=>{
                 var html = "";
                 if(response.length > 0){
                     for(var count = 0;count < response.length; count++){
-                        html += '<a class="move" onclick="get_text(this)" href="javascript:" aria-current="true"><li>'+response[count].name+'</li></a>';
+                        let text = boldquery(response[count].name, query);
+                        html += '<a class="move" onclick="get_text(this)" href="javascript:" aria-current="true"><li>'+text+'</li></a>';
                     }
                 }
                 else{
                     html += '<li class="disabled">No Match Found!</li>';
                 }
                 document.getElementById('search_result').innerHTML = html;
+                document.getElementById("search_result").style.display = "grid";
             }
         }
     }
     else{
         document.getElementById('search_result').innerHTML = '';
+        document.getElementById("search_result").style.display = "grid";
     }
 });
 //search clicked list li
@@ -47,8 +57,6 @@ function searched(){
         window.location.assign("index.php?search="+query);
     }
 }
-
-
 
 // move focus aerokeys
 var keycount = -1;
