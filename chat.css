@@ -1,0 +1,143 @@
+*,html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.people{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    background-color: #272727;
+    height: 100%;
+}
+.self{
+    display: flex;
+    margin:0 5px;
+    width: 80%;
+    height: 60px;
+    /* background-color: #2b2b2b; */
+    text-align: center;
+    color: aliceblue;
+    justify-content: space-between;
+    align-items: center;
+    /* border-radius: 7px; */
+    padding: 10px;
+    /* background-color: rgb(44, 44, 44); */
+    color: rgb(129, 255, 129);
+    width: 80%;
+    border-bottom: 1px solid rgb(150, 150, 150);
+}
+.msg{
+    display: flex;
+    margin: 5px;
+    width: 80%;
+    height: 50px;
+    /* background-color: #2b2b2b; */
+    text-align: center;
+    color: aliceblue;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 7px;
+    padding: 9px;
+}
+.msg:hover{
+    background-color: #3a3a3a;
+}
+.people div img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.people div span{
+    font-family: monospace;
+    font-size: 15px;
+}
+.chatArea{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background-color: #313131;
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.nav img{
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+.messageScroll{
+    width: 100%;
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    background-color: #4b4b4b;
+}
+.messageScroll div{
+    height: 60px;
+    width: 100%;
+    text-align: right;
+    color: white;
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.typeArea{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #353535;
+}
+.typeInsert{
+    width: 37px;
+    height: 37px;
+    display: flex;
+    color: #888888;
+    background-color: #4d4d4d;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    margin: 0 7px;
+}
+.typeArea input{
+    flex: 1;
+    height: 37px;
+    background-color: #535353;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 17px;
+}
+.typeArea button{
+    width: 100px;
+    height: 37px;
+    padding: 0 15px;
+    color: white;
+    background-color: #636363;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin: 0 7px;
+
+}
