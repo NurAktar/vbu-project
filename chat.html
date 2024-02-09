@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="people">
+        <div id="people" class="people">
+            <img class="menu_close" onclick="close_menu()" src="close.svg" alt="x">
             <div class="self"><img src="images/avatar.jpg" alt="pfp"><span>Nur Aktar</span></div>
             <div class="msg"><img src="images/blank-profile-picture-973460__340.png" alt="pfp"><span>late-snow</span></div>
             <div class="msg"><img src="images/blank-profile-picture-973460__340.png" alt="pfp"><span>miko</span></div>
@@ -17,22 +18,105 @@
         </div>
         <div class="chatArea">
             <div class="nav">
+                <img onclick="open_menu()" class="menu" id="menu" src="menu-hamburger-red.svg" alt="menu">
                 <img src="images/blank-profile-picture-973460__340.png" alt="user_image">
                 <span>Client Name</span>
             </div>
-            <div class="messageScroll">
-                <div>Hi</div>
-                <div>who?</div>
-                <div>are</div>
-                <div>you?</div>
-                <div>nick</div>
+            <div id="messageScroll" class="messageScroll">
+
+                <div class="m_left">
+                    <div>Hi</div>
+                    <p>12/23/2022</p>
+                </div>
+
+                <div class="m_right">
+                    <div>who?</div>
+                    <p>12/23/2022</p>
+                </div>
+
+                <div class="m_right">
+                    <div>are you?</div>
+                    <p>9:24pm</p>
+                </div>
+
+                <div class="m_left">
+                    <div>nick</div>
+                    <p>9:32pm</p>
+                </div>
+
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+
+
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+                <div class="m_left">
+                    <div>superb! you got the work to do.. thats amazing now we have to set a time for meeting right now.</div>
+                    <p>9:33pm</p>
+                </div>
+
             </div>
             <div class="typeArea">
                 <div class="typeInsert">+</div>
-                <input placeholder="Type you message" type="text">
+                <input id="message" autocomplete="off" placeholder="Type your message" type="text">
                 <button>Send</button>
             </div>
         </div>
     </div>
 </body>
+<script>
+    let messageScroll = document.getElementById("messageScroll");
+    messageScroll.scrollTop = messageScroll.scrollHeight;
+    const people = document.getElementById("people");
+    function open_menu(){
+        people.classList.add("menu_opened");
+    }
+    function close_menu(){
+        people.classList.remove("menu_opened");
+    }
+</script>
 </html>
