@@ -69,8 +69,10 @@ nav .logo{
     display: none;
     background-color: #ffffff;
     z-index: 1;
-    margin-left: -112px;
-    margin-top: 155px;
+    top: 30px;
+    right: 27px;
+    /* margin-left: -112px; */
+    /* margin-top: 155px; */
     font-family: jost;
     text-align: left;
     padding:0px;
@@ -102,7 +104,8 @@ nav .logo{
     background-color: #e3e3e3;
 }
 .show_signup{
-    margin-top: 146px;
+    /* margin-top: 146px; */
+    top: 35px;
     opacity: 1;
     transition: 300ms;
 }

@@ -154,6 +154,11 @@ footer{
 #chat:hover{
     background-color: #158ff3;
 }
+#chat:disabled{
+    border: 1px solid #c3c3c3;
+    background-color: #dbdbdb;
+    color: #818181;
+}
 
 #contact_details{
     width: 100vw;

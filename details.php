@@ -10,6 +10,14 @@ if(isset($_GET['bookid'])){
     }
     else{
         $priceoff = round((100 - ($row['price']*100)/$row['mrp']),2);
+        $posted_by = $row['posted_by'];
+        //disable chat btn
+        if($userid == $posted_by){
+            $chatbtn = false;
+        }
+        else{
+            $chatbtn = true;
+        }
     }
 }
 else{
@@ -34,6 +42,7 @@ else{
             <a href="index.php"><img class="logo" src="navbarlogo.png" alt="not loading"></a>
         </div>
         <div id="profile" class="profile">
+            <?php echo "<span class='welcome'>".$uname_log."</span>"; ?>
             <img class="avatar" onclick="menu()" <?php if($display){?> src="images/blank-profile-picture-973460__340.png" <?php } else{ ?> src="images/avatar.jpg" <?php } ?> alt="notloaded"/>
             <ul id="signup_box" class="drop-content">
                 <?php
@@ -111,7 +120,7 @@ else{
                 </div>
                 <div class="purchase">
                     <input id="contact" onclick="show_c()" type="button" value="Contact">
-                    <input id="chat" type="button" value="Message">
+                    <input id="chat" <?php if($chatbtn){ echo "onclick='message($id)'";}else{echo "disabled";} ?> type="button" value="Message">
                 </div>
                 <div class="details">
                     <span>Book Details: </span>
@@ -177,6 +186,10 @@ else{
     }
     function show_c(){
         c_details.style.display = "flex";
+    }
+
+    function message(id){
+        window.open("setchat.php?bookid="+id,"_self");
     }
 </script>
 </html>

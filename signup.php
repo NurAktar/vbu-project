@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['submit'])){
     $username = $_POST['username'];
-    $emai = $_POST['email'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
 
@@ -11,7 +11,7 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
         $time = time();
         $u_time = 'u_'.$time;
         $my_post = 'my_post_'.$time;
-        $sql = "INSERT INTO user_reg(username, email, password, my_post, u_table) VALUES('$username', '$emai', '$cpassword', '$my_post', '$u_time')";
+        $sql = "INSERT INTO user_reg(username, email, password, my_post, u_table) VALUES('$username', '$email', '$cpassword', '$my_post', '$u_time')";
         $res = mysqli_query($conn,$sql);
         if($res){
             // create mypost
@@ -41,7 +41,8 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
             $sql = "CREATE TABLE `$u_time` (
                 `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 `user_name` varchar(255) NOT NULL,
-                `u_table` varchar(255) NOT NULL,
+                `bookid` int(11) NOT NULL,
+                `m_table` varchar(255) NOT NULL,
                 `time` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
                 `selling` BOOLEAN NOT NULL
             )";
