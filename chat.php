@@ -1,7 +1,7 @@
 <?php
 include_once "login_check.php";
 include_once "db_conn.php";
-$bookid = $_SESSION['chat_point'];
+$bookid = $_SESSION['chat_point'];//work tobe done!
 $sql = "SELECT u_table FROM user_reg WHERE email='$userid'";
 $res = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($res);
@@ -23,11 +23,11 @@ $res = mysqli_query($conn,$sql);
     <div class="container">
         <div id="people" class="people">
             <img class="menu_close" onclick="close_menu()" src="close.svg" alt="x">
-            <div class="self"><img src="images/avatar.jpg" alt="pfp"><span>Nur Aktar</span></div>
+            <div class="self"><img src="images/avatar.jpg" alt="pfp"><span><?php echo $uname_log; ?></span></div>
             <?php
             while($row = mysqli_fetch_assoc($res)){
             ?>
-            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."'".')"'; ?> class="msg"><img src="images/blank-profile-picture-973460__340.png" alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
+            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['user_name']."'".')"'; ?> class="msg"><img src="images/blank-profile-picture-973460__340.png" alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
             <?php
             }
             mysqli_data_seek($res,0);
@@ -38,7 +38,7 @@ $res = mysqli_query($conn,$sql);
             <div class="nav">
                 <img onclick="open_menu()" class="menu" id="menu" src="menu-hamburger-red.svg" alt="menu">
                 <img src="images/blank-profile-picture-973460__340.png" alt="user_image">
-                <span><?php echo $row['user_name']; $first_m_table = $row['m_table']; $selling = $row['selling']; $sql = "SELECT * FROM $first_m_table";    $res = mysqli_query($conn,$sql); ?></span>
+                <span id="chat_heading"><?php echo $row['user_name']; $first_m_table = $row['m_table']; $selling = $row['selling']; $sql = "SELECT * FROM $first_m_table";    $res = mysqli_query($conn,$sql); ?></span>
             </div>
             <div id="messageScroll" class="messageScroll">
 
@@ -91,13 +91,14 @@ $res = mysqli_query($conn,$sql);
         people.classList.remove("menu_opened");
     }
 
-    function load_chat(m_table,selling){
+    function load_chat(m_table,selling,user_name){
         var form_data = new FormData();
         form_data.append('m_table',m_table);
         form_data.append('selling',selling);
         var ajax_request = new XMLHttpRequest();
         ajax_request.open('POST','handle_msg.php');
         ajax_request.send(form_data);
+        document.getElementById("chat_heading").innerText = user_name;
         ajax_request.onreadystatechange = function(){
             if(ajax_request.readyState == 4 && ajax_request.status == 200){
                 var response = ajax_request.responseText;
