@@ -62,7 +62,7 @@
     /* background-color: #2b2b2b; */
     text-align: center;
     color: aliceblue;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     border-radius: 7px;
     padding: 9px;
@@ -81,6 +81,7 @@
     white-space: break-spaces;
     height: 36px;
     overflow: hidden;
+    padding-left: 14px;
 }
 .chatArea{
     overflow: hidden;

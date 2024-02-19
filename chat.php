@@ -1,11 +1,22 @@
 <?php
 include_once "login_check.php";
 include_once "db_conn.php";
-$bookid = $_SESSION['chat_point']; //work tobe done!
+$bookid = "";
 $sql = "SELECT u_table FROM user_reg WHERE email='$userid'";
 $res = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($res);
 $u_table = $row['u_table'];
+if(isset($_SESSION['chat_point'])){
+    $bookid = $_SESSION['chat_point'];
+}
+else{
+    $sql = "SELECT bookid FROM $u_table ORDER BY id desc LIMIT 1";
+    $res = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($res) > 0){
+        $row = mysqli_fetch_assoc($res);
+        $bookid = $row['bookid'];
+    }
+}
 $people_list = array();
 $sql = "SELECT * FROM $u_table ORDER BY id desc";
 $res = mysqli_query($conn,$sql);
@@ -56,12 +67,16 @@ $res = mysqli_query($conn,$sql);
             <div class="typeArea">
                 <div class="typeInsert">+</div>
                 <input id="message" autocomplete="off" placeholder="Type your message" type="text">
-                <button>Send</button>
+                <button onclick="send_msg()">Send</button>
             </div>
         </div>
     </div>
 </body>
 <script>
+    var g_m_table = ""; //g var for m_table
+    var g_selling = "";
+    var g_user_name = "";
+
     let messageScroll = document.getElementById("messageScroll");
     messageScroll.scrollTop = messageScroll.scrollHeight;
     const people = document.getElementById("people");
@@ -106,6 +121,9 @@ $res = mysqli_query($conn,$sql);
         }
         bookid = bookid;
         selected_div(bookid);
+        g_m_table = m_table;
+        g_selling = selling;
+        g_user_name = user_name;
     }
     <?php
         $sql = "SELECT * FROM $u_table WHERE bookid='$bookid'";
@@ -113,5 +131,25 @@ $res = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($res); 
         echo 'load_chat("'.$row['m_table'].'","'.$row['selling'].'","'.$row['user_name'].'","'.$row['bookid'].'");';
         ?>
+    
+    msg = document.getElementById("message");
+    function send_msg(){
+        text = msg.value;
+        var form_data = new FormData();
+        form_data.append('text',text);
+        form_data.append('m_table',g_m_table);
+        form_data.append('selling',g_selling);
+        form_data.append('user_name',g_user_name);
+        var ajax_request = new XMLHttpRequest();
+        ajax_request.open('POST','send_msg.php');
+        ajax_request.send(form_data);
+        ajax_request.onreadystatechange = function(){
+            if(ajax_request.readyState == 4 && ajax_request.status == 200){
+                var response = ajax_request.responseText;
+                document.getElementById('messageScroll').innerHTML += response;
+            }
+        }
+        msg.value = "";
+    }
 </script>
 </html>
