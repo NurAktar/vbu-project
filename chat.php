@@ -1,12 +1,12 @@
 <?php
 include_once "login_check.php";
 include_once "db_conn.php";
-$bookid = $_SESSION['chat_point'];//work tobe done!
+$bookid = $_SESSION['chat_point']; //work tobe done!
 $sql = "SELECT u_table FROM user_reg WHERE email='$userid'";
 $res = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($res);
 $u_table = $row['u_table'];
-
+$people_list = array();
 $sql = "SELECT * FROM $u_table ORDER BY id desc";
 $res = mysqli_query($conn,$sql);
 ?>
@@ -26,8 +26,9 @@ $res = mysqli_query($conn,$sql);
             <div class="self"><img src="images/avatar.jpg" alt="pfp"><span><?php echo $uname_log; ?></span></div>
             <?php
             while($row = mysqli_fetch_assoc($res)){
+                array_push($people_list,$row['bookid']);
             ?>
-            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['user_name']."'".')"'; ?> class="msg"><img src="images/blank-profile-picture-973460__340.png" alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
+            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['user_name']."',"."'".$row['bookid']."'".')"'; ?> class="msg"><img src="images/blank-profile-picture-973460__340.png" alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
             <?php
             }
             mysqli_data_seek($res,0);
@@ -41,7 +42,6 @@ $res = mysqli_query($conn,$sql);
                 <span id="chat_heading"><?php echo $row['user_name']; $first_m_table = $row['m_table']; $selling = $row['selling']; $sql = "SELECT * FROM $first_m_table";    $res = mysqli_query($conn,$sql); ?></span>
             </div>
             <div id="messageScroll" class="messageScroll">
-
                 <!-- <div class="m_left">
                     <div>Hi</div>
                     <p>12/23/2022</p>
@@ -51,25 +51,6 @@ $res = mysqli_query($conn,$sql);
                     <div>who?</div>
                     <p>12/23/2022</p>
                 </div> -->
-
-                <?php
-                if(mysqli_num_rows($res) > 0){
-                    while($row = mysqli_fetch_assoc($res)){
-                        if($row['selling'] == $selling){ ?>
-                            <div class="m_right">
-                                <div>who?</div>
-                                <p>12/23/2022</p>
-                            </div>
-                        <?php }
-                        else{ ?>
-                            <div class="m_left">
-                                <div><?php echo $row['message']; ?></div>
-                                <p><?php echo $row['time']; ?></p>
-                            </div>
-                        <?php }
-                    }
-                }
-                ?>
 
             </div>
             <div class="typeArea">
@@ -91,7 +72,25 @@ $res = mysqli_query($conn,$sql);
         people.classList.remove("menu_opened");
     }
 
-    function load_chat(m_table,selling,user_name){
+    function selected_div(bookid){
+        var div = <?php echo json_encode($people_list) ?>;
+        const len = div.length;
+        var i_num = 0;
+        var bookid = bookid;
+        for( i=0; i < len; i++) {
+            if ( div[i] == bookid )
+                i_num = i;
+        }
+        all_div = document.querySelectorAll(".msg");
+        for(i=0;i<len;i++){
+            all_div[i].classList.remove("active_pep");
+        }
+        got_div = document.querySelectorAll(".msg")[i_num];
+        got_div.classList.add("active_pep");
+    }
+    // selected_div(<?php echo json_encode($bookid) ?>);
+    
+    function load_chat(m_table,selling,user_name,bookid){
         var form_data = new FormData();
         form_data.append('m_table',m_table);
         form_data.append('selling',selling);
@@ -105,6 +104,14 @@ $res = mysqli_query($conn,$sql);
                 document.getElementById('messageScroll').innerHTML = response;
             }
         }
+        bookid = bookid;
+        selected_div(bookid);
     }
+    <?php
+        $sql = "SELECT * FROM $u_table WHERE bookid='$bookid'";
+        $res = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_assoc($res); 
+        echo 'load_chat("'.$row['m_table'].'","'.$row['selling'].'","'.$row['user_name'].'","'.$row['bookid'].'");';
+        ?>
 </script>
 </html>

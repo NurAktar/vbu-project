@@ -2,6 +2,7 @@
 session_start();
 $userid = "";
 $uname_log = "";
+$display = "";
 if(isset($_SESSION['userid'])){
     $display = false;
     $uname_log = $_SESSION['uname_log'];

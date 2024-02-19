@@ -28,7 +28,7 @@ if(isset($_SESSION['userid'])){
         $row = mysqli_fetch_assoc($res);
         if($bookid == $row['bookid']){
             echo "chat already exist!";
-            $_SESSION['chat_point'] = '$bookid';
+            $_SESSION['chat_point'] = $bookid;
             header("Location:chat.php");
         }
         else{
@@ -47,7 +47,7 @@ if(isset($_SESSION['userid'])){
             $sql = "INSERT INTO `$seller_u_table` (user_name, bookid, m_table, selling) VALUES('$buyer_uname', '$bookid', '$m_table', true)";
             mysqli_query($conn,$sql);
             echo "done!";
-            $_SESSION['chat_point'] = '$bookid';
+            $_SESSION['chat_point'] = $bookid;
             header("Location:chat.php");
         }
     }

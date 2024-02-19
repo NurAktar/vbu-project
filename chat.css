@@ -205,6 +205,10 @@
 
 }
 
+.active_pep{
+    background-color: #1c1c1c;
+}
+
 @media only screen and (max-width: 1100px) {
     .people{
         transition: 0.7s;

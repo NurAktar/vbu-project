@@ -120,7 +120,7 @@ else{
                 </div>
                 <div class="purchase">
                     <input id="contact" onclick="show_c()" type="button" value="Contact">
-                    <input id="chat" <?php if($chatbtn){ echo "onclick='message($id)'";}else{echo "disabled";} ?> type="button" value="Message">
+                    <input id="chat" <?php if($chatbtn){ if(!$display){ echo "onclick='message($id)'";}else{ echo "onclick='login_page()'";}}else{echo "disabled";} ?> type="button" value="Message">
                 </div>
                 <div class="details">
                     <span>Book Details: </span>
@@ -186,6 +186,10 @@ else{
     }
     function show_c(){
         c_details.style.display = "flex";
+    }
+
+    function login_page(){
+        window.open("signin.php","_self");
     }
 
     function message(id){
