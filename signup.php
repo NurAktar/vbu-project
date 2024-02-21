@@ -42,6 +42,7 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
                 `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 `user_name` varchar(255) NOT NULL,
                 `bookid` int(11) NOT NULL,
+                `image` varchar(255) NOT NULL,
                 `m_table` varchar(255) NOT NULL,
                 `time` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
                 `selling` BOOLEAN NOT NULL

@@ -1,24 +1,26 @@
 <?php
 include_once "login_check.php";
 $buyer_email = "";
+$book_image = "";
 if(isset($_SESSION['userid'])){
     $buyer_email = $_SESSION['userid'];
     $buyer_uname = $_SESSION['uname_log'];
     include_once "db_conn.php";
     if(isset($_GET['bookid'])){
         $bookid = $_GET['bookid'];
-        $sql = "SELECT posted_by,name FROM book_posted WHERE id='$bookid'";
+        $sql = "SELECT posted_by,image,name FROM book_posted WHERE id='$bookid'";
         $res = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($res);
         $seller_email = $row['posted_by'];
         $book_name = $row['name'];
+        $book_image = $row['image'];
 
         $sql = "SELECT u_table FROM user_reg WHERE email='$buyer_email'";
         $res = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($res);
         $buyer_u_table = $row['u_table'];
 
-        $sql = "SELECT u_table FROM user_reg WHERE email='$seller_email'";
+        $sql = "SELECT u_table FROM user_reg WHERE email='$seller_email'"; //work here to get user name of seller $seller_uname! also add book_name in u_table!sql
         $res = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($res);
         $seller_u_table = $row['u_table'];
@@ -42,9 +44,9 @@ if(isset($_SESSION['userid'])){
                 `selling` BOOLEAN NOT NULL
             )";
             mysqli_query($conn,$sql);
-            $sql = "INSERT INTO `$buyer_u_table` (user_name, bookid, m_table, selling) VALUES('$book_name', '$bookid', '$m_table', false)";
+            $sql = "INSERT INTO `$buyer_u_table` (user_name, bookid, image, m_table, selling) VALUES('$book_name', '$bookid', '$book_image', '$m_table', false)";
             mysqli_query($conn,$sql);
-            $sql = "INSERT INTO `$seller_u_table` (user_name, bookid, m_table, selling) VALUES('$buyer_uname', '$bookid', '$m_table', true)";
+            $sql = "INSERT INTO `$seller_u_table` (user_name, bookid, image, m_table, selling) VALUES('$buyer_uname', '$bookid', '$book_image', '$m_table', true)";
             mysqli_query($conn,$sql);
             echo "done!";
             $_SESSION['chat_point'] = $bookid;

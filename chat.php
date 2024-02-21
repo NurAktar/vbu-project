@@ -39,7 +39,7 @@ $res = mysqli_query($conn,$sql);
             while($row = mysqli_fetch_assoc($res)){
                 array_push($people_list,$row['bookid']);
             ?>
-            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['user_name']."',"."'".$row['bookid']."'".')"'; ?> class="msg"><img src="images/blank-profile-picture-973460__340.png" alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
+            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['user_name']."',"."'".$row['bookid']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
             <?php
             }
             mysqli_data_seek($res,0);
@@ -66,7 +66,7 @@ $res = mysqli_query($conn,$sql);
             </div>
             <div class="typeArea">
                 <div class="typeInsert">+</div>
-                <input id="message" autocomplete="off" placeholder="Type your message" type="text">
+                <input id="message" autocomplete="off" placeholder="Type your message" type="text" onkeypress="enter(event)">
                 <button onclick="send_msg()">Send</button>
             </div>
         </div>
@@ -104,7 +104,15 @@ $res = mysqli_query($conn,$sql);
         got_div.classList.add("active_pep");
     }
     // selected_div(<?php echo json_encode($bookid) ?>);
-    
+    msg = document.getElementById("message");
+
+    //on press enter
+    function enter(e){
+        if(e.key == "Enter"){
+            send_msg();
+        }
+        
+    }
     function load_chat(m_table,selling,user_name,bookid){
         var form_data = new FormData();
         form_data.append('m_table',m_table);
@@ -117,6 +125,7 @@ $res = mysqli_query($conn,$sql);
             if(ajax_request.readyState == 4 && ajax_request.status == 200){
                 var response = ajax_request.responseText;
                 document.getElementById('messageScroll').innerHTML = response;
+                messageScroll.scrollTop = messageScroll.scrollHeight;
             }
         }
         bookid = bookid;
@@ -124,6 +133,7 @@ $res = mysqli_query($conn,$sql);
         g_m_table = m_table;
         g_selling = selling;
         g_user_name = user_name;
+        msg.value = "";
     }
     <?php
         $sql = "SELECT * FROM $u_table WHERE bookid='$bookid'";
@@ -132,9 +142,11 @@ $res = mysqli_query($conn,$sql);
         echo 'load_chat("'.$row['m_table'].'","'.$row['selling'].'","'.$row['user_name'].'","'.$row['bookid'].'");';
         ?>
     
-    msg = document.getElementById("message");
     function send_msg(){
         text = msg.value;
+        if(text == ""){
+            return 0;
+        }
         var form_data = new FormData();
         form_data.append('text',text);
         form_data.append('m_table',g_m_table);
@@ -147,9 +159,11 @@ $res = mysqli_query($conn,$sql);
             if(ajax_request.readyState == 4 && ajax_request.status == 200){
                 var response = ajax_request.responseText;
                 document.getElementById('messageScroll').innerHTML += response;
+                messageScroll.scrollTop = messageScroll.scrollHeight;
             }
         }
         msg.value = "";
+        document.getElementById("message").focus();
     }
 </script>
 </html>
