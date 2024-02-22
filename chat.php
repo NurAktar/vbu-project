@@ -1,5 +1,8 @@
 <?php
 include_once "login_check.php";
+if($userid == ""){
+    header("Location:signin.php");
+}
 include_once "db_conn.php";
 $bookid = "";
 $sql = "SELECT u_table FROM user_reg WHERE email='$userid'";
@@ -16,6 +19,9 @@ else{
         $row = mysqli_fetch_assoc($res);
         $bookid = $row['bookid'];
     }
+    else{
+        header("location:emptychat.php");
+    }
 }
 $people_list = array();
 $sql = "SELECT * FROM $u_table ORDER BY id desc";
@@ -31,13 +37,17 @@ $res = mysqli_query($conn,$sql);
     <title>Chatting</title>
 </head>
 <body>
+    <div class="img_viewer">
+        <img src="" alt="img">
+        <span>click anywhere to close.</span>
+    </div>
     <div class="container">
         <div id="people" class="people">
             <img class="menu_close" onclick="close_menu()" src="close.svg" alt="x">
             <div class="self"><img src="images/avatar.jpg" alt="pfp"><span><?php echo $uname_log; ?></span></div>
             <?php
             while($row = mysqli_fetch_assoc($res)){
-                array_push($people_list,$row['bookid']);
+                array_push($people_list,$row['m_table']);
             ?>
             <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['book_name']."',"."'".$row['bookid']."',"."'".$row['image']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
             <?php
@@ -50,7 +60,7 @@ $res = mysqli_query($conn,$sql);
         <div class="chatArea">
             <div class="nav">
                 <img onclick="open_menu()" class="menu" id="menu" src="menu-hamburger-red.svg" alt="menu">
-                <img id="chat_heading_img" <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="user_image">
+                <img onclick="view_book_img(event)" id="chat_heading_img" <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="user_image">
                 <span id="chat_heading"><?php echo $row['book_name']; $first_m_table = $row['m_table']; $selling = $row['selling']; $sql = "SELECT * FROM $first_m_table";    $res = mysqli_query($conn,$sql); ?></span>
             </div>
             <div id="messageScroll" class="messageScroll">
@@ -88,13 +98,12 @@ $res = mysqli_query($conn,$sql);
         people.classList.remove("menu_opened");
     }
 
-    function selected_div(bookid){
+    function selected_div(select_user){
         var div = <?php echo json_encode($people_list) ?>;
         const len = div.length;
         var i_num = 0;
-        var bookid = bookid;
         for( i=0; i < len; i++) {
-            if ( div[i] == bookid )
+            if ( div[i] == select_user )
                 i_num = i;
         }
         all_div = document.querySelectorAll(".msg");
@@ -130,8 +139,7 @@ $res = mysqli_query($conn,$sql);
                 messageScroll.scrollTop = messageScroll.scrollHeight;
             }
         }
-        bookid = bookid;
-        selected_div(bookid);
+        selected_div(m_table);
         g_m_table = m_table;
         g_selling = selling;
         // g_user_name = user_name;
@@ -139,7 +147,7 @@ $res = mysqli_query($conn,$sql);
         document.getElementById("message").focus();
     }
     <?php
-        $sql = "SELECT * FROM $u_table WHERE bookid='$bookid'";
+        $sql = "SELECT * FROM $u_table WHERE bookid='$bookid' ORDER BY id desc";
         $res = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($res); 
         echo 'load_chat("'.$row['m_table'].'","'.$row['selling'].'","'.$row['book_name'].'","'.$row['bookid'].'","'.$row['image'].'");';
@@ -168,5 +176,43 @@ $res = mysqli_query($conn,$sql);
         msg.value = "";
         document.getElementById("message").focus();
     }
+
+    img_viewer = document.querySelector(".img_viewer");
+    function view_book_img(e){
+        src = document.getElementById("chat_heading_img").src;
+        img_viewer.querySelector("img").src = src;
+        img_viewer.style.display = "flex";
+    }
+
+    img_viewer.addEventListener("click", ()=>{
+        img_viewer.style.display = "none";
+    });
+
+    function update_chat(){
+        setTimeout(5000);
+        var form_data = new FormData();
+        form_data.append('m_table',g_m_table);
+        form_data.append('selling',g_selling);
+        var ajax_request = new XMLHttpRequest();
+        ajax_request.open('POST','handle_msg.php');
+        ajax_request.send(form_data);
+        ajax_request.onreadystatechange = function(){
+            if(ajax_request.readyState == 4 && ajax_request.status == 200){
+                scrollable = messageScroll.clientHeight;
+                if((messageScroll.scrollHeight - messageScroll.scrollTop - scrollable) < 5){
+                    var response = ajax_request.responseText;
+                    document.getElementById('messageScroll').innerHTML = response;
+                    messageScroll.scrollTop = messageScroll.scrollHeight;
+                }
+                else{
+                    var response = ajax_request.responseText;
+                    document.getElementById('messageScroll').innerHTML = response;
+                }
+                setTimeout(update_chat, 1000);
+            }
+        }
+    }
+    update_chat(); //starting realtime update here.
+    
 </script>
 </html>
