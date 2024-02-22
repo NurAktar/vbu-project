@@ -39,18 +39,19 @@ $res = mysqli_query($conn,$sql);
             while($row = mysqli_fetch_assoc($res)){
                 array_push($people_list,$row['bookid']);
             ?>
-            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['user_name']."',"."'".$row['bookid']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
+            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['book_name']."',"."'".$row['bookid']."',"."'".$row['image']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
             <?php
             }
             mysqli_data_seek($res,0);
             $row = mysqli_fetch_assoc($res);
             ?>
+            <a href="index.php" class="return_btn">Return to web</a>
         </div>
         <div class="chatArea">
             <div class="nav">
                 <img onclick="open_menu()" class="menu" id="menu" src="menu-hamburger-red.svg" alt="menu">
-                <img src="images/blank-profile-picture-973460__340.png" alt="user_image">
-                <span id="chat_heading"><?php echo $row['user_name']; $first_m_table = $row['m_table']; $selling = $row['selling']; $sql = "SELECT * FROM $first_m_table";    $res = mysqli_query($conn,$sql); ?></span>
+                <img id="chat_heading_img" <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="user_image">
+                <span id="chat_heading"><?php echo $row['book_name']; $first_m_table = $row['m_table']; $selling = $row['selling']; $sql = "SELECT * FROM $first_m_table";    $res = mysqli_query($conn,$sql); ?></span>
             </div>
             <div id="messageScroll" class="messageScroll">
                 <!-- <div class="m_left">
@@ -113,14 +114,15 @@ $res = mysqli_query($conn,$sql);
         }
         
     }
-    function load_chat(m_table,selling,user_name,bookid){
+    function load_chat(m_table,selling,book_name,bookid,img_src){
         var form_data = new FormData();
         form_data.append('m_table',m_table);
         form_data.append('selling',selling);
         var ajax_request = new XMLHttpRequest();
         ajax_request.open('POST','handle_msg.php');
         ajax_request.send(form_data);
-        document.getElementById("chat_heading").innerText = user_name;
+        document.getElementById("chat_heading").innerText = book_name;
+        document.getElementById("chat_heading_img").src = 'uploads/'+img_src;
         ajax_request.onreadystatechange = function(){
             if(ajax_request.readyState == 4 && ajax_request.status == 200){
                 var response = ajax_request.responseText;
@@ -132,14 +134,15 @@ $res = mysqli_query($conn,$sql);
         selected_div(bookid);
         g_m_table = m_table;
         g_selling = selling;
-        g_user_name = user_name;
+        // g_user_name = user_name;
         msg.value = "";
+        document.getElementById("message").focus();
     }
     <?php
         $sql = "SELECT * FROM $u_table WHERE bookid='$bookid'";
         $res = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($res); 
-        echo 'load_chat("'.$row['m_table'].'","'.$row['selling'].'","'.$row['user_name'].'","'.$row['bookid'].'");';
+        echo 'load_chat("'.$row['m_table'].'","'.$row['selling'].'","'.$row['book_name'].'","'.$row['bookid'].'","'.$row['image'].'");';
         ?>
     
     function send_msg(){
@@ -151,7 +154,7 @@ $res = mysqli_query($conn,$sql);
         form_data.append('text',text);
         form_data.append('m_table',g_m_table);
         form_data.append('selling',g_selling);
-        form_data.append('user_name',g_user_name);
+        // form_data.append('user_name',g_user_name);
         var ajax_request = new XMLHttpRequest();
         ajax_request.open('POST','send_msg.php');
         ajax_request.send(form_data);

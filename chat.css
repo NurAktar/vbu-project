@@ -197,7 +197,7 @@
     color: #888888;
     background-color: #4d4d4d;
     font-size: 20px;
-    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
     justify-content: center;
     align-items: center;
@@ -232,6 +232,18 @@
 
 .active_pep{
     background-color: #1c1c1c;
+}
+
+.return_btn{
+    bottom: 12px;
+    position: fixed;
+    text-align: center;
+    color: #a3a3a3;
+    text-decoration: none;
+    background-color: #353535;
+    width: 260px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 @media only screen and (max-width: 1100px) {

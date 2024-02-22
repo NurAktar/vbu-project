@@ -1,12 +1,12 @@
 <?php
-if(isset($_POST['user_name']) && isset($_POST['selling']) && isset($_POST['m_table']) && $_POST['text']){
+if(isset($_POST['selling']) && isset($_POST['m_table']) && $_POST['text']){
     include_once "db_conn.php";
     $message = $_POST['text'];
-    $user_name = $_POST['user_name'];
+    // $user_name = $_POST['user_name'];
     $selling = $_POST['selling'];
     $m_table = $_POST['m_table'];
 
-    $sql = "INSERT INTO $m_table (user_name, message, selling) VALUES('$user_name','$message','$selling')";
+    $sql = "INSERT INTO $m_table (message, selling) VALUES('$message','$selling')";
     mysqli_query($conn,$sql);
     $sql = "SELECT * FROM $m_table ORDER BY id desc LIMIT 1";
     $res = mysqli_query($conn,$sql);
