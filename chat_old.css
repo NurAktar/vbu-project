@@ -36,7 +36,7 @@
     align-items: center;
     width: 350px;
     /* flex-grow: 0.1; */
-    background-color: #171717;
+    background-color: #272727;
     height: 100%;
 }
 .self{
@@ -63,7 +63,7 @@
     margin: 5px;
     width: 80%;
     height: 50px;
-    background-color: #212121;
+    /* background-color: #2b2b2b; */
     text-align: left;
     color: aliceblue;
     /* justify-content: space-between; */
@@ -74,6 +74,7 @@
     flex-direction: column;
     align-content: flex-start;
     justify-content: center;
+
 }
 .msg:hover{
     background-color: #3a3a3a;
@@ -111,9 +112,10 @@
     align-items: center;
     height: 60px;
     width: 100%;
-    background-color: #212121;
+    background-color: #313131;
     color: aliceblue;
     /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+
 }
 .nav img{
     height: 30px;
@@ -136,14 +138,14 @@
 }
 .messageScroll{
     /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/papyrus-dark.png"); */
-    /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/beanstalk-dark.png"); */
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/beanstalk-dark.png");
     background-blend-mode: soft-light;
     overflow-y: auto;
     width: 100%;
     flex:1;
     display: flex;
     flex-direction: column;
-    background-color: #212121;
+    background-color: #656565;
 }
 .messageScroll div{
     display: flex;
@@ -173,8 +175,8 @@
     align-self: self-end;
     width: fit-content;
     padding: 10px;
-    background-color: #0060d1;
-    border-radius: 15px 15px 0 15px;
+    background-color: #474699;
+    border-radius: 15px 15px 0 15px ;
 }
 .m_left div{
     display: flex;
@@ -190,14 +192,14 @@
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: #212121;
+    background-color: #353535;
 }
 .typeInsert{
     width: 37px;
     height: 37px;
     display: flex;
-    color: #212121;
-    background-color: #474747;
+    color: #888888;
+    background-color: #4d4d4d;
     font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
@@ -211,10 +213,10 @@
     font-family: dm sans;
     flex: 1;
     height: 37px;
-    background-color: #212121;
+    background-color: #535353;
     color: white;
     outline: none;
-    border: 1px solid #474747;
+    border: none;
     border-radius: 5px;
     padding: 10px 17px;
 }
@@ -224,35 +226,25 @@
     height: 37px;
     padding: 0 15px;
     color: white;
-    background-color: #004597;
+    background-color: #474699;
     border-radius: 5px;
     border: none;
     outline: none;
     margin: 0 7px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
-.typeArea img{
-    /* width: 16px; */
-    height: 14px;
-    filter: invert();
-    padding-left: 5px;
 }
 
 .active_pep{
-    background-color: #474747;
+    background-color: #1c1c1c;
 }
 
 .return_btn{
     bottom: 12px;
     position: fixed;
     text-align: center;
-    color: #dbdbdb;
+    color: #a3a3a3;
     text-decoration: none;
-    background-color: #3b3b3b;
+    background-color: #353535;
     width: 260px;
     padding: 5px 10px;
     border-radius: 5px;

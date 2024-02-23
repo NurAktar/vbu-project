@@ -78,7 +78,7 @@ $res = mysqli_query($conn,$sql);
             <div class="typeArea">
                 <div class="typeInsert">+</div>
                 <input id="message" autocomplete="off" placeholder="Type your message" type="text" onkeypress="enter(event)">
-                <button onclick="send_msg()">Send</button>
+                <button onclick="send_msg()">Send <img src="images/send.png" alt="a"/> </button>
             </div>
         </div>
     </div>
@@ -135,6 +135,9 @@ $res = mysqli_query($conn,$sql);
         ajax_request.onreadystatechange = function(){
             if(ajax_request.readyState == 4 && ajax_request.status == 200){
                 var response = ajax_request.responseText;
+                if(response == ""){
+                    response = "<span style='color:white;text-align:center;'>You have not started chatting yet!!</span>";
+                }
                 document.getElementById('messageScroll').innerHTML = response;
                 messageScroll.scrollTop = messageScroll.scrollHeight;
             }
