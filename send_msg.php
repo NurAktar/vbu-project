@@ -1,4 +1,10 @@
 <?php
+
+function format_time($time){
+    $time = strtotime($time);
+    return date("d-M-Y, h:ia",$time);
+}
+
 if(isset($_POST['selling']) && isset($_POST['m_table']) && $_POST['text']){
     include_once "db_conn.php";
     $message = $_POST['text'];
@@ -13,7 +19,7 @@ if(isset($_POST['selling']) && isset($_POST['m_table']) && $_POST['text']){
     $row = mysqli_fetch_assoc($res); ?>
     <div class="m_right">
         <div><?php echo $row['message']; ?></div>
-        <p><?php echo $row['time']; ?></p>
+        <p><?php echo format_time($row['time']); ?></p>
     </div> 
     <?php
 }

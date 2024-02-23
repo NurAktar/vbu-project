@@ -187,29 +187,58 @@ $res = mysqli_query($conn,$sql);
     img_viewer.addEventListener("click", ()=>{
         img_viewer.style.display = "none";
     });
+    var g_ping = "1";
+    function ping_msg_db(){
+        var lasttime ="";
+        all_p = messageScroll.querySelectorAll("p");
+        try {
+            lasttime = all_p[all_p.length-1].innerText;
+        } catch (error) {};
+        if(lasttime != ""){
+            // console.log(lasttime);
+            var form_ping = new FormData();
+            form_ping.append('lasttime', lasttime);
+            form_ping.append('m_table', g_m_table);
+            var ajax_request = new XMLHttpRequest();
+            ajax_request.open('POST','ping_msg_db.php');
+            ajax_request.send(form_ping);
+            ajax_request.onreadystatechange = function(){
+                if(ajax_request.readyState == 4 && ajax_request.status == 200){
+                    console.log(ajax_request.responseText);
+                    g_ping = ajax_request.responseText;
+                }
+            }
+        }
+    
+    }
 
     function update_chat(){
-        setTimeout(5000);
-        var form_data = new FormData();
-        form_data.append('m_table',g_m_table);
-        form_data.append('selling',g_selling);
-        var ajax_request = new XMLHttpRequest();
-        ajax_request.open('POST','handle_msg.php');
-        ajax_request.send(form_data);
-        ajax_request.onreadystatechange = function(){
-            if(ajax_request.readyState == 4 && ajax_request.status == 200){
-                scrollable = messageScroll.clientHeight;
-                if((messageScroll.scrollHeight - messageScroll.scrollTop - scrollable) < 5){
-                    var response = ajax_request.responseText;
-                    document.getElementById('messageScroll').innerHTML = response;
-                    messageScroll.scrollTop = messageScroll.scrollHeight;
+        ping_msg_db();
+        if(g_ping == "1"){
+            var form_data = new FormData();
+            form_data.append('m_table',g_m_table);
+            form_data.append('selling',g_selling);
+            var ajax_request = new XMLHttpRequest();
+            ajax_request.open('POST','handle_msg.php');
+            ajax_request.send(form_data);
+            ajax_request.onreadystatechange = function(){
+                if(ajax_request.readyState == 4 && ajax_request.status == 200){
+                    scrollable = messageScroll.clientHeight;
+                    if((messageScroll.scrollHeight - messageScroll.scrollTop - scrollable) < 5){
+                        var response = ajax_request.responseText;
+                        document.getElementById('messageScroll').innerHTML = response;
+                        messageScroll.scrollTop = messageScroll.scrollHeight;
+                    }
+                    else{
+                        var response = ajax_request.responseText;
+                        document.getElementById('messageScroll').innerHTML = response;
+                    }
+                    setTimeout(update_chat, 1000);
                 }
-                else{
-                    var response = ajax_request.responseText;
-                    document.getElementById('messageScroll').innerHTML = response;
-                }
-                setTimeout(update_chat, 1000);
             }
+        }
+        else{
+            setTimeout(update_chat, 1000);
         }
     }
     update_chat(); //starting realtime update here.
