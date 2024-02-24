@@ -176,6 +176,9 @@
     background-color: #0060d1;
     border-radius: 15px 15px 0 15px;
 }
+.m_right span{
+    color: #19ff00;
+}
 .m_left div{
     display: flex;
     align-items: start;

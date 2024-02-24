@@ -148,6 +148,7 @@ $res = mysqli_query($conn,$sql);
         // g_user_name = user_name;
         msg.value = "";
         document.getElementById("message").focus();
+        g_seen = "1";
     }
     <?php
         $sql = "SELECT * FROM $u_table WHERE bookid='$bookid' ORDER BY id desc";
@@ -171,8 +172,8 @@ $res = mysqli_query($conn,$sql);
         ajax_request.send(form_data);
         ajax_request.onreadystatechange = function(){
             if(ajax_request.readyState == 4 && ajax_request.status == 200){
-                var response = ajax_request.responseText;
-                document.getElementById('messageScroll').innerHTML += response;
+                // var response = ajax_request.responseText;
+                // document.getElementById('messageScroll').innerHTML += response;
                 messageScroll.scrollTop = messageScroll.scrollHeight;
             }
         }
@@ -190,33 +191,82 @@ $res = mysqli_query($conn,$sql);
     img_viewer.addEventListener("click", ()=>{
         img_viewer.style.display = "none";
     });
+
     var g_ping = "1";
+
     function ping_msg_db(){
         var lasttime ="";
         all_p = messageScroll.querySelectorAll("p");
         try {
             lasttime = all_p[all_p.length-1].innerText;
         } catch (error) {};
-        if(lasttime != ""){
+        if(lasttime == ""){
+            setTimeout(ping_msg_db,1000);
+        }
+        else if(lasttime != ""){
             // console.log(lasttime);
             var form_ping = new FormData();
             form_ping.append('lasttime', lasttime);
+            form_ping.append('selling', g_selling);
             form_ping.append('m_table', g_m_table);
             var ajax_request = new XMLHttpRequest();
             ajax_request.open('POST','ping_msg_db.php');
             ajax_request.send(form_ping);
             ajax_request.onreadystatechange = function(){
                 if(ajax_request.readyState == 4 && ajax_request.status == 200){
-                    console.log(ajax_request.responseText);
+                    // console.log(ajax_request.responseText);
                     g_ping = ajax_request.responseText;
+                    update_chat();
                 }
             }
         }
     
     }
+    var g_seen = "1";
+    function seen_update(){
+        if(g_seen == "1"){
+            // console.log("300");
+            var form_seen = new FormData();
+            form_seen.append('m_table',g_m_table);
+            form_seen.append('selling',g_selling);
+            var ajax_request = new XMLHttpRequest();
+            ajax_request.open('POST','seen_update.php');
+            ajax_request.send(form_seen);
+            ajax_request.onreadystatechange = function(){
+                if(ajax_request.readyState == 4 && ajax_request.status == 200){
+                    scrollable = messageScroll.clientHeight;
+                    if((messageScroll.scrollHeight - messageScroll.scrollTop - scrollable) < 5){
+                        var response = ajax_request.responseText;
+                        if(response == "1"){
+                            all_d = messageScroll.querySelectorAll("div");
+                            last_d = all_d[all_d.length-2];
+                            check = last_d.classList.contains("m_right");
+                            if(check){
+                                last_d.innerHTML += '<span>Seen ✔</span>';
+                                messageScroll.scrollTop = messageScroll.scrollHeight;
+                                g_seen = "0";
+                            }
+                        }
+                    }
+                    else{
+                        var response = ajax_request.responseText;
+                        if(response == "1"){
+                            all_d = messageScroll.querySelectorAll("div");
+                            last_d = all_d[all_d.length-2];
+                            check = last_d.classList.contains("m_right");
+                            if(check){
+                                last_d.innerHTML += '<span>Seen  ✔</span>';
+                                g_seen = "0";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     function update_chat(){
-        ping_msg_db();
+        // ping_msg_db();
         if(g_ping == "1"){
             var form_data = new FormData();
             form_data.append('m_table',g_m_table);
@@ -236,15 +286,21 @@ $res = mysqli_query($conn,$sql);
                         var response = ajax_request.responseText;
                         document.getElementById('messageScroll').innerHTML = response;
                     }
-                    setTimeout(update_chat, 1000);
+                    g_seen = "1";
+                    seen_update();
+                    setTimeout(ping_msg_db, 1000);
                 }
             }
         }
         else{
-            setTimeout(update_chat, 1000);
+            seen_update();
+            setTimeout(ping_msg_db, 1000);
         }
     }
-    update_chat(); //starting realtime update here.
-    
+    //starting realtime update here.
+    function realtime_chat(){
+        ping_msg_db();
+    }
+    realtime_chat();
 </script>
 </html>

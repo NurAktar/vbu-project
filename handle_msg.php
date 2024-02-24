@@ -4,7 +4,7 @@ include "db_conn.php";
 
 function format_time($time){
     $time = strtotime($time);
-    return date("d-M-Y, h:ia",$time);
+    return date("d-M-Y, h:i:sa",$time);
 }
 
 if(isset($_POST['m_table']) && isset($_POST['selling'])){
