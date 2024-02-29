@@ -10,7 +10,7 @@ function format_time($time){
 if(isset($_POST['m_table']) && isset($_POST['selling'])){
     $m_table = $_POST['m_table'];
     $selling = $_POST['selling'];
-    $sql = "SELECT * FROM $m_table" ORDER BY id;
+    $sql = "SELECT * FROM $m_table ORDER BY id";
     $res = mysqli_query($conn,$sql);
     if(mysqli_num_rows($res) > 0){
         while($row = mysqli_fetch_assoc($res)){

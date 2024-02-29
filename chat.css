@@ -27,7 +27,8 @@
 .container{
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    position: fixed;
 }
 .people{
     overflow-y: auto;
@@ -135,6 +136,8 @@
     width: 50px;
 }
 .messageScroll{
+    word-break: break-all;
+
     /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/papyrus-dark.png"); */
     /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/beanstalk-dark.png"); */
     background-blend-mode: soft-light;
@@ -178,6 +181,7 @@
 }
 .m_right span{
     color: #19ff00;
+    font-size: 13px;
 }
 .m_left div{
     display: flex;
@@ -196,9 +200,10 @@
     background-color: #212121;
 }
 .typeInsert{
-    width: 37px;
+    /* display: flex; */
+    display: none;
+    min-width: 37px;
     height: 37px;
-    display: flex;
     color: #212121;
     background-color: #474747;
     font-size: 20px;
@@ -211,15 +216,19 @@
     margin: 0 7px;
 }
 .typeArea input{
+    margin-left: 7px;
     font-family: dm sans;
+    font-size: 15px;
     flex: 1;
     height: 37px;
+    width: 168px;
     background-color: #212121;
     color: white;
     outline: none;
     border: 1px solid #474747;
     border-radius: 5px;
-    padding: 10px 17px;
+    padding: 9px 13px;
+
 }
 .typeArea button{
     cursor: pointer;
@@ -236,13 +245,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    transition: 170ms;
+}
+.typeArea button:hover{
+    background-color: #0f62c7;
 }
 .typeArea img{
     /* width: 16px; */
-    height: 14px;
-    filter: invert();
-    padding-left: 5px;
+    /* filter: invert(); */
+    height: 10px;
+    padding-left: 3px;
 }
 
 .active_pep{
@@ -317,7 +329,7 @@
 }
 @media only screen and (max-width: 720px) {
     .people{
-        transition: 0.7s;
+        transition: 0.35s;
         position: absolute;
         left: 0;
         width: 100%;
@@ -325,5 +337,10 @@
     }
     .menu_opened{
         transform: translateX(0);
+    }
+}
+@media only screen and (max-width: 360px){
+    .messageScroll div{
+        width: fit-content;
     }
 }

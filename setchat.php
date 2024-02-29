@@ -44,6 +44,8 @@ if(isset($_SESSION['userid'])){
                 `selling` BOOLEAN NOT NULL
             )";
             mysqli_query($conn,$sql);
+            $sql = "INSERT INTO $m_table (message,selling) VALUES('Is it available?!','0')";
+            mysqli_query($conn,$sql);
             $sql = "INSERT INTO `$buyer_u_table` (user_name, book_name, bookid, image, m_table, selling) VALUES('$seller_uname', '$book_name', '$bookid', '$book_image', '$m_table', false)";
             mysqli_query($conn,$sql);
             $sql = "INSERT INTO `$seller_u_table` (user_name, book_name, bookid, image, m_table, selling) VALUES('$buyer_uname', '$book_name', '$bookid', '$book_image', '$m_table', true)";

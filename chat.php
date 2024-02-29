@@ -78,7 +78,7 @@ $res = mysqli_query($conn,$sql);
             <div class="typeArea">
                 <div class="typeInsert">+</div>
                 <input id="message" autocomplete="off" placeholder="Type your message" type="text" onkeypress="enter(event)">
-                <button onclick="send_msg()">Send <img src="images/send.png" alt="a"/> </button>
+                <button onclick="send_msg()">Send <img src="images/wsend.png" alt="a"/> </button>
             </div>
         </div>
     </div>
@@ -147,6 +147,7 @@ $res = mysqli_query($conn,$sql);
         g_selling = selling;
         // g_user_name = user_name;
         msg.value = "";
+        close_menu();
         document.getElementById("message").focus();
         g_seen = "1";
     }
@@ -242,7 +243,7 @@ $res = mysqli_query($conn,$sql);
                             last_d = all_d[all_d.length-2];
                             check = last_d.classList.contains("m_right");
                             if(check){
-                                last_d.innerHTML += '<span>Seen ✔</span>';
+                                last_d.innerHTML += '<span>seen ✔</span>';
                                 messageScroll.scrollTop = messageScroll.scrollHeight;
                                 g_seen = "0";
                             }
@@ -255,7 +256,7 @@ $res = mysqli_query($conn,$sql);
                             last_d = all_d[all_d.length-2];
                             check = last_d.classList.contains("m_right");
                             if(check){
-                                last_d.innerHTML += '<span>Seen  ✔</span>';
+                                last_d.innerHTML += '<span>seen ✔</span>';
                                 g_seen = "0";
                             }
                         }

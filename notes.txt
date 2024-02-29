@@ -1,8 +1,8 @@
-seen small size, Seen to seen,
-chat word out of frame,
+seen small size, Seen to seen,/
+chat word out of frame,/
 add emoji,
-msg box font size equal,
-navbar shadow.
+msg box font size equal,/
+navbar shadow./
 
 
 
