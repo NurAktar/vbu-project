@@ -82,7 +82,7 @@ else{
                         <a href="createpost.php">Create Post</a>
                     </li>
                     <li>
-                        <a href="chat.php">Messages</a>
+                        <a href="message.php">Messages</a>
                     </li>
                     <li>
                         <a href="#">My Posts</a>

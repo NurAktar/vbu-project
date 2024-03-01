@@ -193,7 +193,7 @@ else{
     }
 
     function message(id){
-        window.open("setchat.php?bookid="+id,"_self");
+        window.open("setmsg.php?bookid="+id,"_self");
     }
 </script>
 </html>

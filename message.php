@@ -20,7 +20,7 @@ else{
         $bookid = $row['bookid'];
     }
     else{
-        header("location:emptychat.php");
+        header("location:emptyinbox.php");
     }
 }
 $people_list = array();
@@ -33,7 +33,7 @@ $res = mysqli_query($conn,$sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="message.css">
     <title>Chatting</title>
 </head>
 <body>

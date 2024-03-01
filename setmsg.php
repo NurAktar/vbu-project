@@ -32,7 +32,7 @@ if(isset($_SESSION['userid'])){
         if($bookid == $row['bookid']){
             echo "chat already exist!";
             $_SESSION['chat_point'] = $bookid;
-            header("Location:chat.php");
+            header("Location:message.php");
         }
         else{
             $m_table = "m_".time();
@@ -52,7 +52,7 @@ if(isset($_SESSION['userid'])){
             mysqli_query($conn,$sql);
             echo "done!";
             $_SESSION['chat_point'] = $bookid;
-            header("Location:chat.php");
+            header("Location:message.php");
         }
     }
 }
