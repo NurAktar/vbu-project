@@ -43,7 +43,7 @@ $res = mysqli_query($conn,$sql);
     </div>
     <div class="container">
         <div id="people" class="people">
-            <img class="menu_close" onclick="close_menu()" src="close.svg" alt="x">
+            <img class="menu_close" onclick="close_menu()" src="images/close.png" alt="x">
             <div class="self"><img src="images/avatar.jpg" alt="pfp"><span><?php echo $uname_log; ?></span></div>
             <?php
             while($row = mysqli_fetch_assoc($res)){
@@ -59,7 +59,7 @@ $res = mysqli_query($conn,$sql);
         </div>
         <div class="chatArea">
             <div class="nav">
-                <img onclick="open_menu()" class="menu" id="menu" src="menu-hamburger-red.svg" alt="menu">
+                <img onclick="open_menu()" class="menu" id="menu" src="images/menu-hamburger-red.svg" alt="menu">
                 <img onclick="view_book_img(event)" id="chat_heading_img" <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="user_image">
                 <span id="chat_heading"><?php echo $row['book_name']; $first_m_table = $row['m_table']; $selling = $row['selling']; $sql = "SELECT * FROM $first_m_table";    $res = mysqli_query($conn,$sql); ?></span>
             </div>

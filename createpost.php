@@ -14,7 +14,7 @@ include_once "login_check.php";
 <body>
     <nav class="navbar">
         <div class="left_nav">
-            <a href="index.php"><img class="logo" src="navbarlogo.png" alt="not loading"></a>
+            <a href="index.php"><img class="logo" src="images/navbarlogo.png" alt="not loading"></a>
         </div>
         <div id="profile" class="profile">
             <img class="avatar" onclick="menu()" <?php if($display){?> src="images/blank-profile-picture-973460__340.png" <?php } else{ ?> src="images/avatar.jpg" <?php } ?> alt="notloaded"/>
@@ -23,7 +23,7 @@ include_once "login_check.php";
                     <a href="index.php">Home page</a>
                 </li>
                 <li>
-                    <a href="">Messages</a>
+                    <a href="message.php">Messages</a>
                 </li>
                 <li>
                     <a href="">My Posts</a>
