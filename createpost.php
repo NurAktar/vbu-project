@@ -47,7 +47,7 @@ include_once "login_check.php";
     <div class="display_outer">
         <div class="display_inner">
             <div id="backdiv" class="p_container">
-                <div class="drag-drop">
+                <div class="drag-drop" id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
                     <div id="selectedheader">
                         <h2>Selected image:</h2>
                         <div id="selected"></div>

@@ -109,7 +109,21 @@ function backdiv(){
   window.scrollTo(top);
 }
 
+function dragOverHandler(event) {
+    event.preventDefault();
+}
 
+function dropHandler(event){
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/webp', 'image/png'];
+    if (files.length > 0 && validTypes.includes(files[0].type)) {
+        input.files = files;
+        input.dispatchEvent(new Event('change')); // Trigger change event
+    } else {
+        alert('Please drop a JPG file.');
+    }
+}
 
 function file_browse(){
     input.click();
