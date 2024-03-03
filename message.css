@@ -268,9 +268,9 @@
     color: #dbdbdb;
     text-decoration: none;
     background-color: #3b3b3b;
-    width: 260px;
+    width: 180px;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 .return_btn:hover{
     color:#dbdbdb;
