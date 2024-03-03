@@ -124,6 +124,7 @@ $res = mysqli_query($conn,$sql);
         
     }
     function load_chat(m_table,selling,book_name,bookid,img_src){
+        messageScroll.style.scrollBehavior = "auto";
         var form_data = new FormData();
         form_data.append('m_table',m_table);
         form_data.append('selling',selling);
@@ -138,8 +139,9 @@ $res = mysqli_query($conn,$sql);
                 if(response == ""){
                     response = "<span style='color:white;text-align:center;'>You have not started chatting yet!!</span>";
                 }
-                document.getElementById('messageScroll').innerHTML = response;
+                messageScroll.innerHTML = response;
                 messageScroll.scrollTop = messageScroll.scrollHeight;
+                messageScroll.style.scrollBehavior = "smooth";
             }
         }
         selected_div(m_table);

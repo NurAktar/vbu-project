@@ -137,7 +137,7 @@
 }
 .messageScroll{
     word-break: break-all;
-
+    /* scroll-behavior: smooth; */
     /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/papyrus-dark.png"); */
     /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/beanstalk-dark.png"); */
     background-blend-mode: soft-light;
