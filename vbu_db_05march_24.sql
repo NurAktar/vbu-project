@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2024 at 05:52 PM
+-- Generation Time: Mar 06, 2024 at 06:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -136,35 +136,6 @@ INSERT INTO `my_post_1703328219` (`id`, `image`, `name`, `author`, `subject`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `my_post_1708101706`
---
-
-CREATE TABLE `my_post_1708101706` (
-  `id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `mrp` int(10) NOT NULL,
-  `price` int(10) NOT NULL,
-  `publisher` varchar(255) NOT NULL,
-  `pubdate` date NOT NULL,
-  `edition` int(5) NOT NULL,
-  `pagenumber` int(10) NOT NULL,
-  `lang` varchar(50) NOT NULL,
-  `used` varchar(255) NOT NULL,
-  `rate` int(3) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `whatsapp` varchar(255) NOT NULL,
-  `contact` int(10) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `my_post_1708539244`
 --
 
@@ -197,144 +168,6 @@ CREATE TABLE `my_post_1708539244` (
 
 INSERT INTO `my_post_1708539244` (`id`, `image`, `name`, `author`, `subject`, `date`, `mrp`, `price`, `publisher`, `pubdate`, `edition`, `pagenumber`, `lang`, `used`, `rate`, `email`, `whatsapp`, `contact`, `address`, `time`) VALUES
 (1, '1708539321_black-green-material-design-hd-1920x1080.jpg', 'testing data', 'abc', 'sub', '2024-01-01', 1, 1, 'some', '2023-01-01', 1, 1, 'en', 'e', 1, 'sk', '12', 12, 'ok', '2024-02-21 18:15:21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `my_post_1708599386`
---
-
-CREATE TABLE `my_post_1708599386` (
-  `id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `mrp` int(10) NOT NULL,
-  `price` int(10) NOT NULL,
-  `publisher` varchar(255) NOT NULL,
-  `pubdate` date NOT NULL,
-  `edition` int(5) NOT NULL,
-  `pagenumber` int(10) NOT NULL,
-  `lang` varchar(50) NOT NULL,
-  `used` varchar(255) NOT NULL,
-  `rate` int(3) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `whatsapp` varchar(255) NOT NULL,
-  `contact` int(10) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `m_1708542537`
---
-
-CREATE TABLE `m_1708542537` (
-  `id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `message` varchar(750) NOT NULL,
-  `seen` tinyint(1) DEFAULT 0,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `m_1708542537`
---
-
-INSERT INTO `m_1708542537` (`id`, `user_name`, `message`, `seen`, `time`, `selling`) VALUES
-(1, 'Turing Machine Universality of the Game of Life', 'Hi', 1, '2024-02-21 19:09:03', 0),
-(2, 'Turing Machine Universality of the Game of Life', 'df', 1, '2024-02-21 19:16:38', 0),
-(3, 'Turing Machine Universality of the Game of Life', 'dsf', 1, '2024-02-21 19:18:03', 0),
-(4, 'Turing Machine Universality of the Game of Life', 'sdf', 1, '2024-02-21 19:19:01', 0),
-(5, 'Turing Machine Universality of the Game of Life', 'hello', 1, '2024-02-21 19:19:05', 0),
-(6, 'Turing Machine Universality of the Game of Life', 'sdf', 1, '2024-02-21 19:19:51', 0),
-(7, 'Turing Machine Universality of the Game of Life', 'testing 123', 1, '2024-02-21 19:19:58', 0),
-(8, 'Turing Machine Universality of the Game of Life', 'yes', 1, '2024-02-21 19:20:32', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `m_1708598786`
---
-
-CREATE TABLE `m_1708598786` (
-  `id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `message` varchar(750) NOT NULL,
-  `seen` tinyint(1) DEFAULT 0,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `m_1708599414`
---
-
-CREATE TABLE `m_1708599414` (
-  `id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `message` varchar(750) NOT NULL,
-  `seen` tinyint(1) DEFAULT 0,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `m_1708599414`
---
-
-INSERT INTO `m_1708599414` (`id`, `user_name`, `message`, `seen`, `time`, `selling`) VALUES
-(1, '', 'hi', 0, '2024-02-22 11:34:44', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `m_1708599552`
---
-
-CREATE TABLE `m_1708599552` (
-  `id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `message` varchar(750) NOT NULL,
-  `seen` tinyint(1) DEFAULT 0,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `m_1708610612`
---
-
-CREATE TABLE `m_1708610612` (
-  `id` int(11) NOT NULL,
-  `message` varchar(750) NOT NULL,
-  `seen` tinyint(1) DEFAULT 0,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `m_1708621154`
---
-
-CREATE TABLE `m_1708621154` (
-  `id` int(11) NOT NULL,
-  `message` varchar(750) NOT NULL,
-  `seen` tinyint(1) DEFAULT 0,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -434,7 +267,48 @@ INSERT INTO `m_1708625068` (`id`, `message`, `seen`, `time`, `selling`) VALUES
 (77, 'superb', 1, '2024-02-24 16:41:09', 0),
 (78, 'hey', 1, '2024-02-24 16:42:08', 0),
 (79, 'hello', 1, '2024-02-24 16:43:24', 0),
-(80, 'oi', 1, '2024-02-24 16:49:51', 1);
+(80, 'oi', 1, '2024-02-24 16:49:51', 1),
+(81, 'haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1, '2024-02-29 17:36:28', 1),
+(82, 'Hello 🤗', 1, '2024-02-29 18:05:32', 1),
+(83, 'hi', 1, '2024-02-29 18:12:42', 1),
+(84, 'hello', 1, '2024-03-03 06:27:17', 1),
+(85, 'hi', 1, '2024-03-03 06:29:05', 1),
+(86, 'ok', 1, '2024-03-03 06:31:10', 1),
+(87, 'sup', 1, '2024-03-03 06:35:16', 1),
+(88, 'ok', 1, '2024-03-03 06:42:21', 1),
+(89, 'hi', 1, '2024-03-03 06:42:33', 1),
+(90, 'jk', 1, '2024-03-03 06:43:26', 1),
+(91, 'ok', 1, '2024-03-03 06:46:33', 1),
+(92, 'hey', 0, '2024-03-06 10:46:11', 0),
+(93, 'hello', 0, '2024-03-06 16:59:28', 0),
+(94, '🤗', 0, '2024-03-06 17:05:39', 0),
+(95, '😀', 0, '2024-03-06 17:53:22', 0),
+(96, '🙄ok', 0, '2024-03-06 17:53:28', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_1709744532`
+--
+
+CREATE TABLE `m_1709744532` (
+  `id` int(11) NOT NULL,
+  `message` varchar(750) NOT NULL,
+  `seen` tinyint(1) DEFAULT 0,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `selling` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `m_1709744532`
+--
+
+INSERT INTO `m_1709744532` (`id`, `message`, `seen`, `time`, `selling`) VALUES
+(1, 'Is it available?!', 0, '2024-03-06 17:02:12', 0),
+(2, '👍😀🙄🫡😥', 0, '2024-03-06 17:49:08', 0),
+(3, '👍👍🙄dfsdaf🫡', 0, '2024-03-06 17:49:42', 0),
+(4, '👍', 0, '2024-03-06 17:53:04', 0),
+(5, '🫡🫡', 0, '2024-03-06 17:53:09', 0);
 
 -- --------------------------------------------------------
 
@@ -457,9 +331,7 @@ CREATE TABLE `user_reg` (
 
 INSERT INTO `user_reg` (`id`, `username`, `email`, `password`, `my_post`, `u_table`) VALUES
 (13, 'Nur Aktar', 'sknuraktar1999@gmail.com', 'nur', 'my_post_1703328219', 'u_1703328219'),
-(15, 'nuraktar22', 'sknuraktar22@gmail.com', 'nur', 'my_post_1708101706', 'u_1708101706'),
-(16, 'nur2', 'nur2@gmail.com', 'nur', 'my_post_1708539244', 'u_1708539244'),
-(17, 'user1', 'user1@gmail.com', 'nur', 'my_post_1708599386', 'u_1708599386');
+(16, 'nur2', 'nur2@gmail.com', 'nur', 'my_post_1708539244', 'u_1708539244');
 
 -- --------------------------------------------------------
 
@@ -483,39 +355,8 @@ CREATE TABLE `u_1703328219` (
 --
 
 INSERT INTO `u_1703328219` (`id`, `user_name`, `book_name`, `bookid`, `image`, `m_table`, `time`, `selling`) VALUES
-(25, 'nuraktar22', '', 47, '1704219640_71jndwmaDfL._SL1245_.jpg', 'm_1708542537', '2024-02-21 19:08:57', 1),
-(26, 'nuraktar22', '', 58, '1704310450_71rjUMQSGvL.jpg', 'm_1708598786', '2024-02-22 10:46:26', 1),
-(27, 'user1', 'Introduction to Automata Theory', 58, '1704310450_71rjUMQSGvL.jpg', 'm_1708599552', '2024-02-22 10:59:12', 1),
-(28, 'nuraktar22', 'All in One Physics Cbse Class 12 2019-20', 57, '1704310353_blobio-imr-202008_13a9dec8fe644f618bd6ed8bd0f282b1.jpg', 'm_1708610612', '2024-02-22 14:03:32', 1),
-(29, 'nuraktar22', 'Linux Commands for Beginners', 59, '1704310564_linux-commands-for-beginners-original-imagv2q28kgwzvqe.jpeg', 'm_1708621154', '2024-02-22 16:59:14', 1),
-(30, 'nur2', 'Linux Commands for Beginners', 59, '1704310564_linux-commands-for-beginners-original-imagv2q28kgwzvqe.jpeg', 'm_1708625068', '2024-02-22 18:04:28', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `u_1708101706`
---
-
-CREATE TABLE `u_1708101706` (
-  `id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `book_name` varchar(255) NOT NULL,
-  `bookid` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `m_table` varchar(255) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `u_1708101706`
---
-
-INSERT INTO `u_1708101706` (`id`, `user_name`, `book_name`, `bookid`, `image`, `m_table`, `time`, `selling`) VALUES
-(24, 'Turing Machine Universality of the Game of Life', '', 47, '1704219640_71jndwmaDfL._SL1245_.jpg', 'm_1708542537', '2024-02-21 19:08:57', 0),
-(25, 'Introduction to Automata Theory', '', 58, '1704310450_71rjUMQSGvL.jpg', 'm_1708598786', '2024-02-22 10:46:26', 0),
-(26, 'Nur Aktar', 'All in One Physics Cbse Class 12 2019-20', 57, '1704310353_blobio-imr-202008_13a9dec8fe644f618bd6ed8bd0f282b1.jpg', 'm_1708610612', '2024-02-22 14:03:32', 0),
-(27, 'Nur Aktar', 'Linux Commands for Beginners', 59, '1704310564_linux-commands-for-beginners-original-imagv2q28kgwzvqe.jpeg', 'm_1708621154', '2024-02-22 16:59:14', 0);
+(30, 'nur2', 'Linux Commands for Beginners', 59, '1704310564_linux-commands-for-beginners-original-imagv2q28kgwzvqe.jpeg', 'm_1708625068', '2024-02-22 18:04:28', 1),
+(35, 'nur2', 'Ecology,environmental Science & Conservation', 54, '1704309980_71z2Bh-hnSL.jpg', 'm_1709744532', '2024-03-06 17:02:12', 1);
 
 -- --------------------------------------------------------
 
@@ -539,32 +380,8 @@ CREATE TABLE `u_1708539244` (
 --
 
 INSERT INTO `u_1708539244` (`id`, `user_name`, `book_name`, `bookid`, `image`, `m_table`, `time`, `selling`) VALUES
-(2, 'Nur Aktar', 'Linux Commands for Beginners', 59, '1704310564_linux-commands-for-beginners-original-imagv2q28kgwzvqe.jpeg', 'm_1708625068', '2024-02-22 18:04:28', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `u_1708599386`
---
-
-CREATE TABLE `u_1708599386` (
-  `id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `book_name` varchar(255) NOT NULL,
-  `bookid` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `m_table` varchar(255) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `selling` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `u_1708599386`
---
-
-INSERT INTO `u_1708599386` (`id`, `user_name`, `book_name`, `bookid`, `image`, `m_table`, `time`, `selling`) VALUES
-(1, 'Nur Aktar', 'Linux Commands for Beginners', 59, '1704310564_linux-commands-for-beginners-original-imagv2q28kgwzvqe.jpeg', 'm_1708599414', '2024-02-22 10:56:54', 0),
-(2, 'Nur Aktar', 'Introduction to Automata Theory', 58, '1704310450_71rjUMQSGvL.jpg', 'm_1708599552', '2024-02-22 10:59:12', 0);
+(2, 'Nur Aktar', 'Linux Commands for Beginners', 59, '1704310564_linux-commands-for-beginners-original-imagv2q28kgwzvqe.jpeg', 'm_1708625068', '2024-02-22 18:04:28', 0),
+(7, 'Nur Aktar', 'Ecology,environmental Science & Conservation', 54, '1704309980_71z2Bh-hnSL.jpg', 'm_1709744532', '2024-03-06 17:02:12', 0);
 
 --
 -- Indexes for dumped tables
@@ -583,63 +400,21 @@ ALTER TABLE `my_post_1703328219`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `my_post_1708101706`
---
-ALTER TABLE `my_post_1708101706`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `my_post_1708539244`
 --
 ALTER TABLE `my_post_1708539244`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `my_post_1708599386`
---
-ALTER TABLE `my_post_1708599386`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `m_1708542537`
---
-ALTER TABLE `m_1708542537`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `m_1708598786`
---
-ALTER TABLE `m_1708598786`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `m_1708599414`
---
-ALTER TABLE `m_1708599414`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `m_1708599552`
---
-ALTER TABLE `m_1708599552`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `m_1708610612`
---
-ALTER TABLE `m_1708610612`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `m_1708621154`
---
-ALTER TABLE `m_1708621154`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `m_1708625068`
 --
 ALTER TABLE `m_1708625068`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `m_1709744532`
+--
+ALTER TABLE `m_1709744532`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -656,21 +431,9 @@ ALTER TABLE `u_1703328219`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `u_1708101706`
---
-ALTER TABLE `u_1708101706`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `u_1708539244`
 --
 ALTER TABLE `u_1708539244`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `u_1708599386`
---
-ALTER TABLE `u_1708599386`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -690,64 +453,22 @@ ALTER TABLE `my_post_1703328219`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `my_post_1708101706`
---
-ALTER TABLE `my_post_1708101706`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `my_post_1708539244`
 --
 ALTER TABLE `my_post_1708539244`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `my_post_1708599386`
---
-ALTER TABLE `my_post_1708599386`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `m_1708542537`
---
-ALTER TABLE `m_1708542537`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `m_1708598786`
---
-ALTER TABLE `m_1708598786`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `m_1708599414`
---
-ALTER TABLE `m_1708599414`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `m_1708599552`
---
-ALTER TABLE `m_1708599552`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `m_1708610612`
---
-ALTER TABLE `m_1708610612`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `m_1708621154`
---
-ALTER TABLE `m_1708621154`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `m_1708625068`
 --
 ALTER TABLE `m_1708625068`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+
+--
+-- AUTO_INCREMENT for table `m_1709744532`
+--
+ALTER TABLE `m_1709744532`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_reg`
@@ -759,25 +480,13 @@ ALTER TABLE `user_reg`
 -- AUTO_INCREMENT for table `u_1703328219`
 --
 ALTER TABLE `u_1703328219`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT for table `u_1708101706`
---
-ALTER TABLE `u_1708101706`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `u_1708539244`
 --
 ALTER TABLE `u_1708539244`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `u_1708599386`
---
-ALTER TABLE `u_1708599386`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
