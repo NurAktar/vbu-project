@@ -50,7 +50,7 @@ $res = mysqli_query($conn,$sql);
             while($row = mysqli_fetch_assoc($res)){
                 array_push($people_list,$row['m_table']);
             ?>
-            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['book_name']."',"."'".$row['bookid']."',"."'".$row['image']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span><a href="<?php echo "del_msg2.php?bookid=".$row['bookid']."&m_table=".$row['m_table']; ?>"><div class="dustbin"><img src="images/dustbin.png" alt="x"></div></a></div>
+            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['book_name']."',"."'".$row['bookid']."',"."'".$row['image']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span><a href="<?php echo "del_msg.php?bookid=".$row['bookid']."&m_table=".$row['m_table']; ?>"><div class="dustbin"><img src="images/dustbin.png" alt="x"></div></a></div>
             <?php
             }
             mysqli_data_seek($res,0);
@@ -77,7 +77,9 @@ $res = mysqli_query($conn,$sql);
 
             </div>
             <div class="typeArea">
+                <div class="emoji-list"><a onclick="insert_e(1)">👍</a> <a onclick="insert_e(2)">😀</a> <a onclick="insert_e(3)">🙄</a> <a onclick="insert_e(4)">🫡</a> <a onclick="insert_e(5)">😥</a></div>
                 <div class="typeInsert">+</div>
+                <div onclick="emojishow()" class="emoji"><img src="images/smile.png" alt="emoji"></div>
                 <input id="message" autocomplete="off" placeholder="Type your message" type="text" onkeypress="enter(event)">
                 <button onclick="send_msg()">Send <img src="images/wsend.png" alt="a"/> </button>
             </div>
@@ -153,6 +155,7 @@ $res = mysqli_query($conn,$sql);
         close_menu();
         document.getElementById("message").focus();
         g_seen = "1";
+        document.querySelector(".emoji-list").classList.remove("emoji_active");
     }
     <?php
         $sql = "SELECT * FROM $u_table WHERE bookid='$bookid' ORDER BY id desc";
@@ -182,6 +185,7 @@ $res = mysqli_query($conn,$sql);
             }
         }
         msg.value = "";
+        document.querySelector(".emoji-list").classList.remove("emoji_active");
         document.getElementById("message").focus();
     }
 
@@ -301,6 +305,24 @@ $res = mysqli_query($conn,$sql);
             setTimeout(ping_msg_db, 1000);
         }
     }
+
+    function emojishow(){
+        ediv = document.querySelector(".emoji-list");
+        ediv.classList.toggle("emoji_active");
+    }
+    function insert_e(emo){
+        if(emo == 1)
+        msg.value += "👍";
+        if(emo == 2)
+        msg.value += "😀";
+        if(emo == 3)
+        msg.value += "🙄";
+        if(emo == 4)
+        msg.value += "🫡";
+        if(emo == 5)
+        msg.value += "😥";
+    }
+
     //starting realtime update here.
     function realtime_chat(){
         ping_msg_db();

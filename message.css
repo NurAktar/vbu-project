@@ -90,12 +90,12 @@
     align-items: center;
 }
 .dustbin:hover{
-    background-color: #ffb7b7;
+    background-color: #ad88884f;
 }
 .people .dustbin img{
     width: 16px;
     height: 16px;
-    filter: contrast(0.3);
+    filter: contrast(0) grayscale(1);
 }
 .dustbin:hover img{
     filter:contrast(1);
@@ -278,7 +278,34 @@
     height: 10px;
     padding-left: 3px;
 }
-
+.emoji{
+    display: flex;
+    cursor: pointer;
+}
+.emoji:hover img{
+    filter:contrast(1.5);
+}
+.emoji img{
+    width: 28px;
+    height: 28px;
+    padding: 0;
+}
+.emoji-list{
+    display: none;
+    position: absolute;
+    background-color: #313131;
+    padding: 4px 8px;
+    font-size: 18px;
+    border: 1px solid #656565;
+    border-radius: 27px;
+    transform: translate(15px, -46px);
+}
+.emoji-list a{
+    cursor: pointer;
+}
+.emoji_active{
+    display: block;
+}
 .active_pep{
     background-color: #474747;
 }

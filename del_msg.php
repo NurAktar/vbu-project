@@ -23,7 +23,13 @@ if(isset($_SESSION['userid'])){
         $row = mysqli_fetch_assoc($res);
         $seller_u_table = $row['u_table'];
 
-
+        $sql = "DELETE FROM $buyer_u_table WHERE m_table='$m_table'";
+        $res = mysqli_query($conn,$sql);
+        $sql = "DELETE FROM $seller_u_table WHERE m_table='$m_table'";
+        $res = mysqli_query($conn,$sql);
+        $sql = "DROP TABLE $m_table";
+        $res = mysqli_query($conn,$sql);
+        header("Location:message.php");
     }
 }
 ?>
