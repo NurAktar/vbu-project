@@ -79,6 +79,28 @@
 .msg:hover{
     background-color: #3a3a3a;
 }
+
+.people .dustbin{
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dustbin:hover{
+    background-color: #ffb7b7;
+}
+.people .dustbin img{
+    width: 16px;
+    height: 16px;
+    filter: contrast(0.3);
+}
+.dustbin:hover img{
+    filter:contrast(1);
+}
+
 .people .self span{
     width: fit-content;
 }

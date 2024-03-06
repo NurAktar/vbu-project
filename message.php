@@ -32,6 +32,7 @@ $res = mysqli_query($conn,$sql);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="message.css">
     <title>Chatting</title>
@@ -49,7 +50,7 @@ $res = mysqli_query($conn,$sql);
             while($row = mysqli_fetch_assoc($res)){
                 array_push($people_list,$row['m_table']);
             ?>
-            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['book_name']."',"."'".$row['bookid']."',"."'".$row['image']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span></div>
+            <div <?php echo 'onclick="load_chat('."'".$row['m_table']."',"."'".$row['selling']."',"."'".$row['book_name']."',"."'".$row['bookid']."',"."'".$row['image']."'".')"'; ?> class="msg"><img <?php echo "src = 'uploads/".$row['image']."'"; ?> alt="pfp"><span><?php echo $row['user_name']; ?></span><a href="<?php echo "del_msg2.php?bookid=".$row['bookid']."&m_table=".$row['m_table']; ?>"><div class="dustbin"><img src="images/dustbin.png" alt="x"></div></a></div>
             <?php
             }
             mysqli_data_seek($res,0);

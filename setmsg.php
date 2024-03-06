@@ -20,7 +20,7 @@ if(isset($_SESSION['userid'])){
         $row = mysqli_fetch_assoc($res);
         $buyer_u_table = $row['u_table'];
 
-        $sql = "SELECT u_table,username FROM user_reg WHERE email='$seller_email'"; //work here to get user name of seller $seller_uname! also add book_name in u_table!sql
+        $sql = "SELECT u_table,username FROM user_reg WHERE email='$seller_email'"; //user name of seller $seller_uname!
         $res = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($res);
         $seller_u_table = $row['u_table'];
