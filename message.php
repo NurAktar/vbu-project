@@ -77,7 +77,7 @@ $res = mysqli_query($conn,$sql);
 
             </div>
             <div class="typeArea">
-                <div class="emoji-list"><a onclick="insert_e(1)">👍</a> <a onclick="insert_e(2)">😀</a> <a onclick="insert_e(3)">🙄</a> <a onclick="insert_e(4)">🫡</a> <a onclick="insert_e(5)">😥</a></div>
+                <div class="emoji-list"><a onclick="insert_e(1)">👍</a> <a onclick="insert_e(2)">😀</a> <a onclick="insert_e(3)">🙄</a> <a onclick="insert_e(4)">🤔</a> <a onclick="insert_e(5)">☹️</a> <a onclick="insert_e(6)">😥</a></div>
                 <div class="typeInsert">+</div>
                 <div onclick="emojishow()" class="emoji"><img src="images/smile.png" alt="emoji"></div>
                 <input id="message" autocomplete="off" placeholder="Type your message" type="text" onkeypress="enter(event)">
@@ -318,8 +318,10 @@ $res = mysqli_query($conn,$sql);
         if(emo == 3)
         msg.value += "🙄";
         if(emo == 4)
-        msg.value += "🫡";
+        msg.value += "🤔";
         if(emo == 5)
+        msg.value += "☹️";
+        if(emo == 6)
         msg.value += "😥";
     }
 

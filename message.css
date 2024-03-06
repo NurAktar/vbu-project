@@ -281,6 +281,7 @@
 .emoji{
     display: flex;
     cursor: pointer;
+    margin-left: 7px;
 }
 .emoji:hover img{
     filter:contrast(1.5);
@@ -295,7 +296,7 @@
     position: absolute;
     background-color: #313131;
     padding: 4px 8px;
-    font-size: 18px;
+    font-size: 20px;
     border: 1px solid #656565;
     border-radius: 27px;
     transform: translate(15px, -46px);
