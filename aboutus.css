@@ -12,3 +12,15 @@
 .container div{
     text-align: center;
 }
+@media only screen and (max-width: 600px) {
+    .container img{
+        width: 80px;
+        margin: 10px 0;
+    }
+    .container div h1{
+        font-size: 25px;
+    }
+    .container div h3{
+        font-size: 16px;
+    }
+}

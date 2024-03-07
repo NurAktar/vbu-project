@@ -29,6 +29,7 @@ if(isset($_SESSION['userid'])){
         $res = mysqli_query($conn,$sql);
         $sql = "DROP TABLE $m_table";
         $res = mysqli_query($conn,$sql);
+        unset($_SESSION['chat_point']);
         header("Location:message.php");
     }
 }

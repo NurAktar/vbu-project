@@ -20,7 +20,8 @@ include_once "login_check.php";
             <a href="index.php"><img class="logo" src="images/navbarlogo.png" alt="not loading"></a>
         </div>
         <div id="profile" class="profile">
-            <img  class="avatar" onclick="menu()" src="images/blank-profile-picture-973460__340.png" alt="notloaded"/>
+        <?php if($display){ echo "<a class='welcome' href='signin.php'>Login</a>"; } else{ echo "<span class='welcome'>".$uname_log."</span>"; } ?>
+        <img class="avatar" onclick="menu()" <?php if($display){?> src="images/blank-profile-picture-973460__340.png" <?php } else{ ?> src="images/avatar.jpg" <?php } ?> alt="notloaded"/>
             <ul id="signup_box" class="drop-content">
             <?php
             if($display){?>
@@ -35,6 +36,9 @@ include_once "login_check.php";
                 </li><?php
             }
             else{?>
+                <li>
+                    <a href="index.php">Home page</a>
+                </li>
                 <li>
                     <a href="createpost.php">Create Post</a>
                 </li>

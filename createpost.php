@@ -18,6 +18,7 @@ include_once "login_check.php";
             <a href="index.php"><img class="logo" src="images/navbarlogo.png" alt="not loading"></a>
         </div>
         <div id="profile" class="profile">
+        <?php if($display){ echo "<a class='welcome' href='signin.php'>Login</a>"; } else{ echo "<span class='welcome'>".$uname_log."</span>"; } ?>
             <img class="avatar" onclick="menu()" <?php if($display){?> src="images/blank-profile-picture-973460__340.png" <?php } else{ ?> src="images/avatar.jpg" <?php } ?> alt="notloaded"/>
             <ul id="signup_box" class="drop-content">
                 <li>
@@ -43,7 +44,7 @@ include_once "login_check.php";
         <p></p>
     </div>
     <div class="header">
-        <h1>Create Post</h1>
+        <h1>#Create Post</h1>
     </div>
     <div class="display_outer">
         <div class="display_inner">
@@ -56,13 +57,14 @@ include_once "login_check.php";
                     <h2 id="dragheader">Drag and Drop image here</h2>
                     <span>OR</span>
                     <button onclick="file_browse()">Add Files</button>
-                    <input id="i_image" type="file" accept=".jpg,.jpeg,.webp,.png,images/*" hidden>
+                    <input id="i_image" type="file" accept=".jpg,.jpeg,.webp,.png" hidden>
                     <p>Supported Files</p>
-                    <p>jpg, png</p>
+                    <p>jpg, png, webp</p>
                     <br>
                     <span>
                         remove.bg before upload <a target="_blank" href="https://www.remove.bg">here</a>
                     </span>
+                    <!-- <a onclick="rembg()">Remove using AI</a> -->
                 </div>
                 <div class="bookdetails">
                     <h1>Fill in the details</h1>

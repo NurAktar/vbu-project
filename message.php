@@ -9,6 +9,7 @@ $sql = "SELECT u_table FROM user_reg WHERE email='$userid'";
 $res = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($res);
 $u_table = $row['u_table'];
+
 if(isset($_SESSION['chat_point'])){
     $bookid = $_SESSION['chat_point'];
 }
@@ -20,7 +21,7 @@ else{
         $bookid = $row['bookid'];
     }
     else{
-        header("location:emptyinbox.php");
+        header("Location:emptyinbox.php");
     }
 }
 $people_list = array();
