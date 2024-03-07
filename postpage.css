@@ -161,11 +161,80 @@
     text-decoration: underline;
 }
 
-
-
-
-
-
+.rembg{
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 12;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    flex-direction: column;
+}
+.rembg button:nth-child(1){
+    font-family: 'Jost';
+    font-weight: bold;
+    width: 100px;
+    color: #37c100;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 5px;
+    border: 1px solid;
+    cursor: pointer;
+}
+.rembg button:nth-child(2){
+    font-family: 'Jost';
+    font-weight: bold;
+    width: 100px;
+    color: #ff0707;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 5px;
+    border: 1px solid;
+    cursor: pointer;
+}
+.rembg button:nth-child(1):hover{
+    background-color: #37c100;
+    color: white;
+}
+.rembg button:nth-child(2):hover{
+    background-color: #ff0707;
+    color: white;
+}
+.rembg h1{
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    font-family: jost;
+}
+.rembg .spinner{
+    height: 50px;
+    object-fit: contain;
+}
+.rembg img{
+    height: 70%;
+    width: 90%;
+    object-fit: contain;
+}
+.rembg_active{
+    display: flex;
+}
+.drag-drop .rem_btn{
+    font-family: jost;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 7px;
+    color: #494949;
+}
+.rem_btn:disabled{
+    color: #929292;
+    background-color: #d7d7d7;
+}
+.rem_btn:disabled:hover{
+    color: #929292;
+    background-color: #d7d7d7;
+}
 
 
 

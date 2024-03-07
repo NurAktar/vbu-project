@@ -13,18 +13,21 @@ function menu(){
 }
 
 window.addEventListener('click', function(e){
-    //defocus drop menu
-    if (!document.getElementById('profile').contains(e.target)){
-        if( signup_box.style.display == 'block'){
-            signup_box.classList.toggle("show_signup");
-            setTimeout(function(){signup_box.style.display = 'none';},300);
+    try {
+        //defocus drop menu
+        if (!document.getElementById('profile').contains(e.target)){
+            if( signup_box.style.display == 'block'){
+                signup_box.classList.toggle("show_signup");
+                setTimeout(function(){signup_box.style.display = 'none';},300);
+            }
         }
+        //defocus search results list
+        if(!document.getElementById("searchq").contains(e.target)){
+            document.getElementById("search_result").style.display = "none";
+        }
+    } catch (error) {
+        //
     }
-    //defocus search results list
-    if(!document.getElementById("searchq").contains(e.target)){
-        document.getElementById("search_result").style.display = "none";
-    }
-
 });
 
 function closebtn(){

@@ -43,6 +43,7 @@ include_once "login_check.php";
         </span>
         <p></p>
     </div>
+    <div class="rembg" id="rembg"></div>
     <div class="header">
         <h1>#Create Post</h1>
     </div>
@@ -61,10 +62,10 @@ include_once "login_check.php";
                     <p>Supported Files</p>
                     <p>jpg, png, webp</p>
                     <br>
-                    <span>
+                    <!-- <span>
                         remove.bg before upload <a target="_blank" href="https://www.remove.bg">here</a>
-                    </span>
-                    <!-- <a onclick="rembg()">Remove using AI</a> -->
+                    </span> -->
+                    <button class="rem_btn" disabled onclick="rembg()">AI Background Remover</button>
                 </div>
                 <div class="bookdetails">
                     <h1>Fill in the details</h1>

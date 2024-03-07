@@ -132,6 +132,7 @@ function file_browse(){
 input.addEventListener("change", function(){
     file = this.files[0];
     show_file();
+    document.querySelector(".rem_btn").disabled = false;
 });
 
 function show_file(){
@@ -203,4 +204,47 @@ function redirecthome(){
     setTimeout(() => {
         location.href = "index.php";
     }, 5000);
+}
+
+//ai bg remove
+var rem_img;
+rembgdiv = document.getElementById("rembg");
+function rembg(){
+    if(file == undefined){
+        return 0;
+    }
+    rembgdiv.innerHTML = "<h1>AI Background Remover!</h1>";
+    rembgdiv.innerHTML += "<img class='spinner' src='images/spinner.gif'>";
+    rembgdiv.classList.add("rembg_active");
+    const data = new FormData();
+    data.append('file',file);
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.addEventListener('readystatechange', function () {
+        if (this.readyState === this.DONE) {
+            blob = this.response;
+            rem_img = blob;
+            img = URL.createObjectURL(blob);
+            rembgdiv.innerHTML = "<h1>AI Background Remover!</h1>";
+            rembgdiv.innerHTML += "<img id='remimg' src=''>";
+            document.getElementById("remimg").src = img;
+            rembgdiv.innerHTML += "<div><button onclick='use_rembg()'>USE IT</button><button onclick='rembg_not_show()'>CANCEL</button></div>";
+        }
+    });
+
+    xhttp.open("POST", "https://nuraktar.pythonanywhere.com/rembg_file", true);
+    xhttp.responseType = 'blob';
+    xhttp.send(data);
+}
+
+function use_rembg(){
+    new_file = new File([rem_img], rem_img.name, { type: rem_img.type });
+    var dataTransfer = new DataTransfer();
+    dataTransfer.items.add(new_file);
+    input.files = dataTransfer.files;
+    input.dispatchEvent(new Event('change')); // Trigger change event
+    rembgdiv.classList.remove("rembg_active");
+}
+function rembg_not_show(){
+    rembgdiv.classList.remove("rembg_active");
 }
