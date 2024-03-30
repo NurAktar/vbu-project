@@ -85,7 +85,7 @@ else{
                         <a href="message.php">Messages</a>
                     </li>
                     <li>
-                        <a href="#">My Posts</a>
+                        <a href="mypost.php">My Posts</a>
                     </li>
                     <li>
                         <a href="aboutus.php">About us</a>

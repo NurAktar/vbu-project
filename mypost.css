@@ -1,0 +1,89 @@
+.heading{
+    margin: 20px;
+}
+
+.card .innerbox a {
+    background-color: #ffc500;
+    color: black;
+}
+
+.card:hover .innerbox a {
+    background-color: #000000;
+    color: #ffc500;
+}
+.card .innerbox .del {
+    background-color: #ff8585;
+    color: black;
+}
+
+.card:hover .innerbox .del {
+    background-color: #000000;
+    color: #ffb5b5;
+}
+
+.editform{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    font-family: open sans;
+}
+.editform div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 800px;
+}
+.editform input{
+    padding: 7px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(179, 179, 179);
+    margin-bottom: 5px;
+    box-shadow: #5959599c 2px 2px 7px -2px;
+}
+.editform textarea{
+    padding: 7px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(179, 179, 179);
+    margin-bottom: 5px;
+}
+
+.btn-grad {
+    cursor: pointer;
+    background-image: linear-gradient(to right, #52c234 0%, #061700  51%, #52c234  100%);
+    margin: 10px 0;
+    padding: 20px;
+    font-family: dm sans;
+    text-align: center;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .editform div{
+        width: 500px;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .editform div{
+        width: 350px;
+    }
+}
+@media only screen and (max-width: 460px) {
+    .editform div{
+        width: 300px;
+    }
+}
