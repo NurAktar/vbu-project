@@ -433,6 +433,31 @@ nav .logo{
 .bg_img{
     height: 100vh;
 }
+
+.sortby{
+    font-family: jost;
+    font-size: 14px;
+    padding: 10px;
+    font-weight: bold;
+}
+.sortby a{
+    text-decoration: none;
+    outline: none;
+    background-color: none;
+    font-weight: normal;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.sortby a:hover{
+    background-color: white;
+}
+/* .sortby a:visited{
+    background-color: white;
+    border-bottom: 2px solid blue;
+} */
+.sortby_selected{
+    border-bottom: 2px solid #ff8e8e;
+}
 footer{
     margin-top: auto;
     display: flex;
@@ -521,5 +546,11 @@ footer div{
     }
     .searchbar_body ul{
         width: calc(100% - 24px);
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .sortby{
+        font-size: 10px;
     }
 }

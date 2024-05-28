@@ -10,8 +10,23 @@ if (isset($_GET['npage'])) {
     $res = mysqli_query($conn, $sql);
 }
 elseif (isset($_GET['search'])) {
+    if(isset($_GET['filter'])){
+        $filter = $_GET['filter'];
+    }
+    else{
+        $filter = "";
+    }
     $query = $_GET['search'];
-    $sql = "SELECT * FROM book_posted WHERE name LIKE '$query%' UNION SELECT * FROM book_posted WHERE name LIKE '%$query%' UNION SELECT * FROM book_posted WHERE author LIKE '$query%' LIMIT 12";
+    if($filter == "Low"){
+        $sql = "SELECT * FROM book_posted WHERE name LIKE '$query%' UNION SELECT * FROM book_posted WHERE name LIKE '%$query%' UNION SELECT * FROM book_posted WHERE author LIKE '$query%' ORDER BY price LIMIT 20";
+    }
+    elseif($filter == "High"){
+        $sql = "SELECT * FROM book_posted WHERE name LIKE '$query%' UNION SELECT * FROM book_posted WHERE name LIKE '%$query%' UNION SELECT * FROM book_posted WHERE author LIKE '$query%' ORDER BY price desc LIMIT 20";
+    }
+    else{
+        $sql = "SELECT * FROM book_posted WHERE name LIKE '$query%' UNION SELECT * FROM book_posted WHERE name LIKE '%$query%' UNION SELECT * FROM book_posted WHERE author LIKE '$query%' LIMIT 20";
+    }
+    // $sql = "SELECT * FROM book_posted WHERE name LIKE '$query%' UNION SELECT * FROM book_posted WHERE name LIKE '%$query%' UNION SELECT * FROM book_posted WHERE author LIKE '$query%' LIMIT 20";
     // $sql = "SELECT name FROM book_posted WHERE name LIKE '$q%' UNION SELECT name FROM book_posted WHERE name LIKE '%$q%' UNION SELECT author FROM book_posted WHERE author LIKE '$q%' LIMIT 5";
     $res = mysqli_query($conn, $sql);
     $searching = true;
@@ -105,11 +120,16 @@ else{
                 <input class="searchbar_btn" value="SEARCH" onclick="searched()" type="button"></input>
             </div>
             <ul id="search_result"></ul>
+            <?php if($searching == true){ ?>
+            <div class="sortby">Sort By<a id="f_low" href="index.php?search=<?php echo $query;?>&filter=Low">Price -- Low to High</a><a id="f_high" href="index.php?search=<?php echo $query;?>&filter=High">Price -- High to Low</a><a id="f_newest" href="index.php?search=<?php echo $query;?>">Newest First</a></div>
+            <?php } ?>
         </div>
         
         <div class="container">
             <div class="heading">
+                <?php if($searching == false){ ?>
                 <h1>Recent post:</h1>
+                <?php }?>
             </div>
             <!-- fetching cards -->
             <?php

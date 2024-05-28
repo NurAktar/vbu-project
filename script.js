@@ -43,3 +43,18 @@ function closebtn(){
         setTimeout(function(){element.style.display = 'none';},300);
     }
 }
+
+var url = window.location.href;
+var urlparams = new URLSearchParams(url);
+var filter = urlparams.get("filter");
+console.log(filter);
+
+if(filter == "Low"){
+    document.getElementById("f_low").classList.add("sortby_selected");
+}
+else if(filter == "High"){
+    document.getElementById("f_high").classList.add("sortby_selected");
+}
+else{
+    document.getElementById("f_newest").classList.add("sortby_selected");
+}
